@@ -31,18 +31,64 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942" />
+    <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d" />
+    <Reference Include="MySql.Data, Version=8.0.24.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ciudades\DataSetCiudades.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCiudades.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
-    <Compile Include="DataSetSeguridad.Designer.cs">
+    <Compile Include="Clientes\DataSetClientes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetClientes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados\DataSetEmpleados.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetEmpleados.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\DataSetPedidos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPedidos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Personas\DataSetPersonas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPersonas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\DataSetProductos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetProductos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SeguridadLog\DataSetSeguridad.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetSeguridad.xsd</DependentUpon>
@@ -50,17 +96,89 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataSetSeguridad.xsc">
+    <None Include="app.config" />
+    <None Include="Ciudades\DataSetCiudades.xsc">
+      <DependentUpon>DataSetCiudades.xsd</DependentUpon>
+    </None>
+    <None Include="Ciudades\DataSetCiudades.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCiudades.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Ciudades\DataSetCiudades.xss">
+      <DependentUpon>DataSetCiudades.xsd</DependentUpon>
+    </None>
+    <None Include="Clientes\DataSetClientes.xsc">
+      <DependentUpon>DataSetClientes.xsd</DependentUpon>
+    </None>
+    <None Include="Clientes\DataSetClientes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetClientes.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Clientes\DataSetClientes.xss">
+      <DependentUpon>DataSetClientes.xsd</DependentUpon>
+    </None>
+    <None Include="Empleados\DataSetEmpleados.xsc">
+      <DependentUpon>DataSetEmpleados.xsd</DependentUpon>
+    </None>
+    <None Include="Empleados\DataSetEmpleados.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetEmpleados.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Empleados\DataSetEmpleados.xss">
+      <DependentUpon>DataSetEmpleados.xsd</DependentUpon>
+    </None>
+    <None Include="Pedidos\DataSetPedidos.xsc">
+      <DependentUpon>DataSetPedidos.xsd</DependentUpon>
+    </None>
+    <None Include="Pedidos\DataSetPedidos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPedidos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Pedidos\DataSetPedidos.xss">
+      <DependentUpon>DataSetPedidos.xsd</DependentUpon>
+    </None>
+    <None Include="Personas\DataSetPersonas.xsc">
+      <DependentUpon>DataSetPersonas.xsd</DependentUpon>
+    </None>
+    <None Include="Personas\DataSetPersonas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPersonas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Personas\DataSetPersonas.xss">
+      <DependentUpon>DataSetPersonas.xsd</DependentUpon>
+    </None>
+    <None Include="Productos\DataSetProductos.xsc">
+      <DependentUpon>DataSetProductos.xsd</DependentUpon>
+    </None>
+    <None Include="Productos\DataSetProductos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetProductos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Productos\DataSetProductos.xss">
+      <DependentUpon>DataSetProductos.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SeguridadLog\DataSetSeguridad.xsc">
       <DependentUpon>DataSetSeguridad.xsd</DependentUpon>
     </None>
-    <None Include="DataSetSeguridad.xsd">
+    <None Include="SeguridadLog\DataSetSeguridad.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataSetSeguridad.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSetSeguridad.xss">
+    <None Include="SeguridadLog\DataSetSeguridad.xss">
       <DependentUpon>DataSetSeguridad.xsd</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
