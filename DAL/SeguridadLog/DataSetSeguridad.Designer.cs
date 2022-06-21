@@ -28,6 +28,8 @@ namespace DAL.SeguridadLog {
         
         private usuariosDataTable tableusuarios;
         
+        private global::System.Data.DataRelation relationfk_usuariosXempleados;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -218,6 +220,7 @@ namespace DAL.SeguridadLog {
                     this.tableusuarios.InitVars();
                 }
             }
+            this.relationfk_usuariosXempleados = this.Relations["fk_usuariosXempleados"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +235,10 @@ namespace DAL.SeguridadLog {
             base.Tables.Add(this.tableLogin);
             this.tableusuarios = new usuariosDataTable();
             base.Tables.Add(this.tableusuarios);
+            this.relationfk_usuariosXempleados = new global::System.Data.DataRelation("fk_usuariosXempleados", new global::System.Data.DataColumn[] {
+                        this.tableLogin.Id_empleadoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableusuarios.Id_empleadoColumn}, false);
+            this.Relations.Add(this.relationfk_usuariosXempleados);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -331,6 +338,10 @@ namespace DAL.SeguridadLog {
             private global::System.Data.DataColumn columnId_empleado;
             
             private global::System.Data.DataColumn columnEstado;
+            
+            private global::System.Data.DataColumn columnCorreo_electronico;
+            
+            private global::System.Data.DataColumn columnGenero;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -439,6 +450,22 @@ namespace DAL.SeguridadLog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Correo_electronicoColumn {
+                get {
+                    return this.columnCorreo_electronico;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn GeneroColumn {
+                get {
+                    return this.columnGenero;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -474,7 +501,7 @@ namespace DAL.SeguridadLog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public LoginRow AddLoginRow(int Id_usuarios, string Usuario, string Password, int Id_personas, string Nombres, string Apellidos, string Telefono, int Id_empleado, short Estado) {
+            public LoginRow AddLoginRow(int Id_usuarios, string Usuario, string Password, int Id_personas, string Nombres, string Apellidos, string Telefono, int Id_empleado, short Estado, string Correo_electronico, short Genero) {
                 LoginRow rowLoginRow = ((LoginRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id_usuarios,
@@ -485,7 +512,9 @@ namespace DAL.SeguridadLog {
                         Apellidos,
                         Telefono,
                         Id_empleado,
-                        Estado};
+                        Estado,
+                        Correo_electronico,
+                        Genero};
                 rowLoginRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLoginRow);
                 return rowLoginRow;
@@ -526,6 +555,8 @@ namespace DAL.SeguridadLog {
                 this.columnTelefono = base.Columns["Telefono"];
                 this.columnId_empleado = base.Columns["Id_empleado"];
                 this.columnEstado = base.Columns["Estado"];
+                this.columnCorreo_electronico = base.Columns["Correo_electronico"];
+                this.columnGenero = base.Columns["Genero"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -549,6 +580,10 @@ namespace DAL.SeguridadLog {
                 base.Columns.Add(this.columnId_empleado);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
+                this.columnCorreo_electronico = new global::System.Data.DataColumn("Correo_electronico", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCorreo_electronico);
+                this.columnGenero = new global::System.Data.DataColumn("Genero", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGenero);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId_usuarios,
                                 this.columnId_personas,
@@ -567,6 +602,8 @@ namespace DAL.SeguridadLog {
                 this.columnTelefono.MaxLength = 40;
                 this.columnId_empleado.AllowDBNull = false;
                 this.columnEstado.AllowDBNull = false;
+                this.columnCorreo_electronico.AllowDBNull = false;
+                this.columnCorreo_electronico.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -820,14 +857,17 @@ namespace DAL.SeguridadLog {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public usuariosRow AddusuariosRow(int Id_usuarios, string Usuario, string Password, string Correo_electronico, int Id_empleado) {
+            public usuariosRow AddusuariosRow(int Id_usuarios, string Usuario, string Password, string Correo_electronico, LoginRow parentLoginRowByfk_usuariosXempleados) {
                 usuariosRow rowusuariosRow = ((usuariosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id_usuarios,
                         Usuario,
                         Password,
                         Correo_electronico,
-                        Id_empleado};
+                        null};
+                if ((parentLoginRowByfk_usuariosXempleados != null)) {
+                    columnValuesArray[4] = parentLoginRowByfk_usuariosXempleados[7];
+                }
                 rowusuariosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowusuariosRow);
                 return rowusuariosRow;
@@ -1125,6 +1165,56 @@ namespace DAL.SeguridadLog {
                     this[this.tableLogin.EstadoColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Correo_electronico {
+                get {
+                    return ((string)(this[this.tableLogin.Correo_electronicoColumn]));
+                }
+                set {
+                    this[this.tableLogin.Correo_electronicoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public short Genero {
+                get {
+                    try {
+                        return ((short)(this[this.tableLogin.GeneroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Genero\' de la tabla \'Login\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLogin.GeneroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsGeneroNull() {
+                return this.IsNull(this.tableLogin.GeneroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetGeneroNull() {
+                this[this.tableLogin.GeneroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public usuariosRow[] GetusuariosRows() {
+                if ((this.Table.ChildRelations["fk_usuariosXempleados"] == null)) {
+                    return new usuariosRow[0];
+                }
+                else {
+                    return ((usuariosRow[])(base.GetChildRows(this.Table.ChildRelations["fk_usuariosXempleados"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1198,6 +1288,17 @@ namespace DAL.SeguridadLog {
                 }
                 set {
                     this[this.tableusuarios.Id_empleadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public LoginRow LoginRow {
+                get {
+                    return ((LoginRow)(this.GetParentRow(this.Table.ParentRelations["fk_usuariosXempleados"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_usuariosXempleados"]);
                 }
             }
             
@@ -1416,6 +1517,8 @@ namespace DAL.SeguridadLog.DataSetSeguridadTableAdapters {
             tableMapping.ColumnMappings.Add("Telefono", "Telefono");
             tableMapping.ColumnMappings.Add("Id_empleado", "Id_empleado");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
+            tableMapping.ColumnMappings.Add("Correo_electronico", "Correo_electronico");
+            tableMapping.ColumnMappings.Add("Genero", "Genero");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1429,14 +1532,42 @@ namespace DAL.SeguridadLog.DataSetSeguridadTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        usuarios.Id_usuarios, usuarios.Usuario, usuarios.Password, personas.Id_personas, personas.Nombres, personas.Apellidos, personas.Telefono, empleados.Id_empleado, empleados.Estado
+            this._commandCollection[0].CommandText = @"SELECT        usuarios.Id_usuarios, usuarios.Usuario, usuarios.Password, personas.Id_personas, personas.Nombres, personas.Apellidos, personas.Telefono, empleados.Id_empleado, empleados.Estado, usuarios.Correo_electronico, 
+                         personas.Genero
 FROM            usuarios INNER JOIN
                          empleados ON usuarios.Id_empleado = empleados.Id_empleado INNER JOIN
                          personas ON empleados.Id_personas = personas.Id_personas";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[1].Connection = new global::MySql.Data.MySqlClient.MySqlConnection(global::DAL.Properties.Settings.Default.bd_pedidoswebConnectionString);
+            this._commandCollection[1].CommandText = @"SELECT        usuarios.Id_usuarios, usuarios.Usuario, usuarios.Password, personas.Id_personas, personas.Nombres, personas.Apellidos, personas.Telefono, empleados.Id_empleado, empleados.Estado, usuarios.Correo_electronico, 
+                         personas.Genero
+FROM            usuarios INNER JOIN
+                         empleados ON usuarios.Id_empleado = empleados.Id_empleado INNER JOIN
+                         personas ON empleados.Id_personas = personas.Id_personas
+WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios.Password = @pass)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@user";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Usuario";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[1].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@pass";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 16;
+            param.IsNullable = true;
+            param.SourceColumn = "Password";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[1].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1445,6 +1576,29 @@ FROM            usuarios INNER JOIN
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSetSeguridad.LoginDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSetSeguridad.LoginDataTable dataTable = new DataSetSeguridad.LoginDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetSeguridad.LoginDataTable GetDataLogin(string user, string pass) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((user == null)) {
+                throw new global::System.ArgumentNullException("user");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(user));
+            }
+            if ((pass == null)) {
+                throw new global::System.ArgumentNullException("pass");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(pass));
+            }
             DataSetSeguridad.LoginDataTable dataTable = new DataSetSeguridad.LoginDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

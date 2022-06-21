@@ -2,14 +2,15 @@
 <xs:schema id="DataSetPedidos" targetNamespace="http://tempuri.org/DataSetPedidos.xsd" xmlns:mstns="http://tempuri.org/DataSetPedidos.xsd" xmlns="http://tempuri.org/DataSetPedidos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="bd_pedidoswebConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_pedidoswebConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.bd_pedidoswebConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="bd_pedidoswebConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_pedidoswebConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.bd_pedidoswebConnectionString" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="pedidosTableAdapter" GeneratorDataComponentClassName="pedidosTableAdapter" Name="pedidos" UserDataComponentName="pedidosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="bd_pedidosweb.pedidos" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataPedidos" GetMethodModifier="Public" GetMethodName="GetDataPedidos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataPedidos" UserSourceName="GetDataPedidos">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="bd_pedidosweb.pedidos" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataPedidos" GetMethodModifier="Public" GetMethodName="GetDataPedidos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataPedidos" UserSourceName="GetDataPedidos">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `pedidos` WHERE ((`Id_pedidos` = @p1) AND (`Fecha_pedido` = @p2) AND (`Estado_pedido` = @p3) AND (`Monto_total` = @p4) AND ((@p5 = 1 AND `Id_usuarios` IS NULL) OR (`Id_usuarios` = @p6)) AND ((@p7 = 1 AND `Id_cliente` IS NULL) OR (`Id_cliente` = @p8)))</CommandText>
@@ -74,11 +75,37 @@ FROM            pedidos</CommandText>
               <Mapping SourceColumn="Id_usuarios" DataSetColumn="Id_usuarios" />
               <Mapping SourceColumn="Id_cliente" DataSetColumn="Id_cliente" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="bd_pedidosweb.pedidos" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetUltimoinsert" GetMethodModifier="Public" GetMethodName="GetUltimoinsert" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetUltimoinsert" UserSourceName="GetUltimoinsert">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        pedidos.*
+FROM            pedidos ORDER BY Id_pedidos DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryPedido" Modifier="Public" Name="InsertQueryPedido" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryPedido">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO pedidos
+                         (Fecha_pedido, Estado_pedido, Monto_total, Id_usuarios, Id_cliente)
+VALUES        (@Fecha_pedido, @Estado_pedido, @Monto_total, @Id_usuarios, @Id_cliente)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Fecha_pedido" ColumnName="Fecha_pedido" DataSourceName="bd_pedidosweb.pedidos" DataTypeServer="date" DbType="DateTime" Direction="Input" ParameterName="@Fecha_pedido" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="Fecha_pedido" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Estado_pedido" ColumnName="Estado_pedido" DataSourceName="bd_pedidosweb.pedidos" DataTypeServer="varchar(30)(30)" DbType="String" Direction="Input" ParameterName="@Estado_pedido" Precision="0" ProviderType="VarChar" Scale="0" Size="30" SourceColumn="Estado_pedido" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Monto_total" ColumnName="Monto_total" DataSourceName="bd_pedidosweb.pedidos" DataTypeServer="decimal(8,2)" DbType="Decimal" Direction="Input" ParameterName="@Monto_total" Precision="8" ProviderType="NewDecimal" Scale="2" Size="0" SourceColumn="Monto_total" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Id_usuarios" ColumnName="Id_usuarios" DataSourceName="bd_pedidosweb.pedidos" DataTypeServer="int(11)" DbType="Int32" Direction="Input" ParameterName="@Id_usuarios" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Id_usuarios" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Id_cliente" ColumnName="Id_cliente" DataSourceName="bd_pedidosweb.pedidos" DataTypeServer="int(11)" DbType="Int32" Direction="Input" ParameterName="@Id_cliente" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Id_cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="detalle_pedidoTableAdapter" GeneratorDataComponentClassName="detalle_pedidoTableAdapter" Name="detalle_pedido" UserDataComponentName="detalle_pedidoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="bd_pedidosweb.detalle_pedido" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataPedidos" GetMethodModifier="Public" GetMethodName="GetDataPedidos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataPedidos" UserSourceName="GetDataPedidos">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="bd_pedidosweb.detalle_pedido" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataPedidos" GetMethodModifier="Public" GetMethodName="GetDataPedidos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataPedidos" UserSourceName="GetDataPedidos">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `detalle_pedido` WHERE ((`Id_detalle` = @p1) AND (`Cantidad_pedida` = @p2) AND (`Precio_producto` = @p3) AND ((@p4 = 1 AND `Id_pedidos` IS NULL) OR (`Id_pedidos` = @p5)) AND ((@p6 = 1 AND `Id_productos` IS NULL) OR (`Id_productos` = @p7)))</CommandText>
@@ -138,7 +165,23 @@ FROM            detalle_pedido</CommandText>
               <Mapping SourceColumn="Id_pedidos" DataSetColumn="Id_pedidos" />
               <Mapping SourceColumn="Id_productos" DataSetColumn="Id_productos" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryDetalle_pedido" Modifier="Public" Name="InsertQueryDetalle_pedido" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryDetalle_pedido">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO detalle_pedido
+                         (Cantidad_pedida, Precio_producto, Id_pedidos, Id_productos)
+VALUES        (@Cantidad_pedida, @Precio_producto, @Id_pedidos, @Id_productos)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Cantidad_pedida" ColumnName="Cantidad_pedida" DataSourceName="bd_pedidosweb.detalle_pedido" DataTypeServer="int(11)" DbType="Int32" Direction="Input" ParameterName="@Cantidad_pedida" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Cantidad_pedida" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Precio_producto" ColumnName="Precio_producto" DataSourceName="bd_pedidosweb.detalle_pedido" DataTypeServer="decimal(8,2)" DbType="Decimal" Direction="Input" ParameterName="@Precio_producto" Precision="8" ProviderType="NewDecimal" Scale="2" Size="0" SourceColumn="Precio_producto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Id_pedidos" ColumnName="Id_pedidos" DataSourceName="bd_pedidosweb.detalle_pedido" DataTypeServer="int(11)" DbType="Int32" Direction="Input" ParameterName="@Id_pedidos" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Id_pedidos" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Id_productos" ColumnName="Id_productos" DataSourceName="bd_pedidosweb.detalle_pedido" DataTypeServer="int(11)" DbType="Int32" Direction="Input" ParameterName="@Id_productos" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Id_productos" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -148,7 +191,7 @@ FROM            detalle_pedido</CommandText>
   <xs:element name="DataSetPedidos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetPedidos" msprop:Generator_UserDSName="DataSetPedidos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="pedidos" msprop:Generator_TableClassName="pedidosDataTable" msprop:Generator_TableVarName="tablepedidos" msprop:Generator_TablePropName="pedidos" msprop:Generator_RowDeletingName="pedidosRowDeleting" msprop:Generator_RowChangingName="pedidosRowChanging" msprop:Generator_RowEvHandlerName="pedidosRowChangeEventHandler" msprop:Generator_RowDeletedName="pedidosRowDeleted" msprop:Generator_UserTableName="pedidos" msprop:Generator_RowChangedName="pedidosRowChanged" msprop:Generator_RowEvArgName="pedidosRowChangeEvent" msprop:Generator_RowClassName="pedidosRow">
+        <xs:element name="pedidos" msprop:Generator_TableClassName="pedidosDataTable" msprop:Generator_TableVarName="tablepedidos" msprop:Generator_RowChangedName="pedidosRowChanged" msprop:Generator_TablePropName="pedidos" msprop:Generator_RowDeletingName="pedidosRowDeleting" msprop:Generator_RowChangingName="pedidosRowChanging" msprop:Generator_RowEvHandlerName="pedidosRowChangeEventHandler" msprop:Generator_RowDeletedName="pedidosRowDeleted" msprop:Generator_RowClassName="pedidosRow" msprop:Generator_UserTableName="pedidos" msprop:Generator_RowEvArgName="pedidosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_pedidos" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_pedidos" msprop:Generator_ColumnPropNameInRow="Id_pedidos" msprop:Generator_ColumnPropNameInTable="Id_pedidosColumn" msprop:Generator_UserColumnName="Id_pedidos" type="xs:int" />
@@ -166,7 +209,7 @@ FROM            detalle_pedido</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="detalle_pedido" msprop:Generator_TableClassName="detalle_pedidoDataTable" msprop:Generator_TableVarName="tabledetalle_pedido" msprop:Generator_TablePropName="detalle_pedido" msprop:Generator_RowDeletingName="detalle_pedidoRowDeleting" msprop:Generator_RowChangingName="detalle_pedidoRowChanging" msprop:Generator_RowEvHandlerName="detalle_pedidoRowChangeEventHandler" msprop:Generator_RowDeletedName="detalle_pedidoRowDeleted" msprop:Generator_UserTableName="detalle_pedido" msprop:Generator_RowChangedName="detalle_pedidoRowChanged" msprop:Generator_RowEvArgName="detalle_pedidoRowChangeEvent" msprop:Generator_RowClassName="detalle_pedidoRow">
+        <xs:element name="detalle_pedido" msprop:Generator_TableClassName="detalle_pedidoDataTable" msprop:Generator_TableVarName="tabledetalle_pedido" msprop:Generator_RowChangedName="detalle_pedidoRowChanged" msprop:Generator_TablePropName="detalle_pedido" msprop:Generator_RowDeletingName="detalle_pedidoRowDeleting" msprop:Generator_RowChangingName="detalle_pedidoRowChanging" msprop:Generator_RowEvHandlerName="detalle_pedidoRowChangeEventHandler" msprop:Generator_RowDeletedName="detalle_pedidoRowDeleted" msprop:Generator_RowClassName="detalle_pedidoRow" msprop:Generator_UserTableName="detalle_pedido" msprop:Generator_RowEvArgName="detalle_pedidoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_detalle" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_detalle" msprop:Generator_ColumnPropNameInRow="Id_detalle" msprop:Generator_ColumnPropNameInTable="Id_detalleColumn" msprop:Generator_UserColumnName="Id_detalle" type="xs:int" />
@@ -190,7 +233,7 @@ FROM            detalle_pedido</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="fk_predidoXdetalle" msdata:parent="pedidos" msdata:child="detalle_pedido" msdata:parentkey="Id_pedidos" msdata:childkey="Id_pedidos" msprop:Generator_UserChildTable="detalle_pedido" msprop:Generator_ChildPropName="Getdetalle_pedidoRows" msprop:Generator_UserRelationName="fk_predidoXdetalle" msprop:Generator_ParentPropName="pedidosRow" msprop:Generator_RelationVarName="relationfk_predidoXdetalle" msprop:Generator_UserParentTable="pedidos" />
+      <msdata:Relationship name="fk_predidoXdetalle" msdata:parent="pedidos" msdata:child="detalle_pedido" msdata:parentkey="Id_pedidos" msdata:childkey="Id_pedidos" msprop:Generator_UserChildTable="detalle_pedido" msprop:Generator_ChildPropName="Getdetalle_pedidoRows" msprop:Generator_UserRelationName="fk_predidoXdetalle" msprop:Generator_RelationVarName="relationfk_predidoXdetalle" msprop:Generator_UserParentTable="pedidos" msprop:Generator_ParentPropName="pedidosRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

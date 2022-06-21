@@ -57,7 +57,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetCiudades.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Clientes\DataSetClientes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,7 +146,7 @@
     <None Include="Personas\DataSetPersonas.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetPersonas.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetPersonas1.Designer.cs</LastGenOutput>
     </None>
     <None Include="Personas\DataSetPersonas.xss">
       <DependentUpon>DataSetPersonas.xsd</DependentUpon>
