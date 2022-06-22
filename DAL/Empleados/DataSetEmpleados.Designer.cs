@@ -929,16 +929,20 @@ namespace DAL.Empleados.DataSetEmpleadosTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        empleados.*\r\nFROM            empleados";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO empleados\r\n                         (Estado, Id_personas)\r\nVALUES    " +
-                "    (@Estado, @Id_personas)";
+            this._commandCollection[1].CommandText = "SELECT        empleados.*\r\nFROM            empleados ORDER BY Id_empleado DESC";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO empleados\r\n                         (Estado, Id_personas)\r\nVALUES    " +
+                "    (@Estado, @Id_personas)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Estado";
             param.DbType = global::System.Data.DbType.Int16;
@@ -946,7 +950,7 @@ namespace DAL.Empleados.DataSetEmpleadosTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Estado";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Id_personas";
             param.DbType = global::System.Data.DbType.Int32;
@@ -954,7 +958,7 @@ namespace DAL.Empleados.DataSetEmpleadosTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Id_personas";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -963,6 +967,17 @@ namespace DAL.Empleados.DataSetEmpleadosTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSetEmpleados.empleadosDataTable GetDataEmpleados() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSetEmpleados.empleadosDataTable dataTable = new DataSetEmpleados.empleadosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetEmpleados.empleadosDataTable GetDataByultimoinsert() {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
             DataSetEmpleados.empleadosDataTable dataTable = new DataSetEmpleados.empleadosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -1109,7 +1124,7 @@ namespace DAL.Empleados.DataSetEmpleadosTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertQueryEmpleados(short Estado, global::System.Nullable<int> Id_personas) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[1];
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
             command.Parameters[0].Value = ((short)(Estado));
             if ((Id_personas.HasValue == true)) {
                 command.Parameters[1].Value = ((int)(Id_personas.Value));

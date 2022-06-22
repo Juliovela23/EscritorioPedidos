@@ -5,12 +5,12 @@
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="bd_pedidoswebConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_pedidoswebConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.bd_pedidoswebConnectionString" Provider="MySql.Data.MySqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="bd_pedidoswebConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_pedidoswebConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.bd_pedidoswebConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="bd_pedidoswebConnectionString1" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_pedidoswebConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.bd_pedidoswebConnectionString" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="empleadosTableAdapter" GeneratorDataComponentClassName="empleadosTableAdapter" Name="empleados" UserDataComponentName="empleadosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="bd_pedidosweb.empleados" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataEmpleados" GetMethodModifier="Public" GetMethodName="GetDataEmpleados" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataEmpleados" UserSourceName="GetDataEmpleados">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="bd_pedidosweb.empleados" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataEmpleados" GetMethodModifier="Public" GetMethodName="GetDataEmpleados" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataEmpleados" UserSourceName="GetDataEmpleados">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `empleados` WHERE ((`Id_empleado` = @p1) AND (`Estado` = @p2) AND ((@p3 = 1 AND `Id_personas` IS NULL) OR (`Id_personas` = @p4)))</CommandText>
@@ -61,7 +61,16 @@ FROM            empleados</CommandText>
               <Mapping SourceColumn="Id_personas" DataSetColumn="Id_personas" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryEmpleados" Modifier="Public" Name="InsertQueryEmpleados" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryEmpleados">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="bd_pedidosweb.empleados" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByultimoinsert" GetMethodModifier="Public" GetMethodName="GetDataByultimoinsert" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByultimoinsert" UserSourceName="GetDataByultimoinsert">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        empleados.*
+FROM            empleados ORDER BY Id_empleado DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryEmpleados" Modifier="Public" Name="InsertQueryEmpleados" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryEmpleados">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO empleados

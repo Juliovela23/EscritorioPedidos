@@ -33,7 +33,13 @@ namespace UI.inicio
         {
             this.Close();
         }
-
+        public void logout()
+        {
+            txtuser.Text = "";
+            txtpss.Text = "";
+            txtuser.Focus();
+            this.Show();
+        }
         private void btnEnter_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtpss.Text) || String.IsNullOrEmpty(txtuser.Text))

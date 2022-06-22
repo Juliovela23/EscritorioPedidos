@@ -5,12 +5,12 @@
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="bd_pedidoswebConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_pedidoswebConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.bd_pedidoswebConnectionString" Provider="MySql.Data.MySqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="bd_pedidoswebConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_pedidoswebConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.bd_pedidoswebConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="bd_pedidoswebConnectionString1" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_pedidoswebConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.bd_pedidoswebConnectionString" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LoginTableAdapter" GeneratorDataComponentClassName="LoginTableAdapter" Name="Login" UserDataComponentName="LoginTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        usuarios.Id_usuarios, usuarios.Usuario, usuarios.Password, personas.Id_personas, personas.Nombres, personas.Apellidos, personas.Telefono, empleados.Id_empleado, empleados.Estado, usuarios.Correo_electronico, 
@@ -57,7 +57,7 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="usuariosTableAdapter" GeneratorDataComponentClassName="usuariosTableAdapter" Name="usuarios" UserDataComponentName="usuariosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="bd_pedidosweb.usuarios" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetDataUsuario" GetMethodModifier="Public" GetMethodName="GetDataUsuario" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataUsuario" UserSourceName="GetDataUsuario">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="bd_pedidosweb.usuarios" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetDataUsuario" GetMethodModifier="Public" GetMethodName="GetDataUsuario" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataUsuario" UserSourceName="GetDataUsuario">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `usuarios` WHERE ((`Id_usuarios` = @p1) AND (`Usuario` = @p2) AND (`Password` = @p3) AND (`Correo_electronico` = @p4) AND ((@p5 = 1 AND `Id_empleado` IS NULL) OR (`Id_empleado` = @p6)))</CommandText>
@@ -118,7 +118,19 @@ FROM            usuarios</CommandText>
               <Mapping SourceColumn="Id_empleado" DataSetColumn="Id_empleado" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString1 (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryUsuario" Modifier="Public" Name="InsertQueryUsuario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryUsuario">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="bd_pedidosweb.usuarios" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByUser" GetMethodModifier="Public" GetMethodName="GetDataByUser" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByUser" UserSourceName="GetDataByUser">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        usuarios.*
+FROM            usuarios where Usuario = @Usuario
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Usuario" ColumnName="Usuario" DataSourceName="bd_pedidosweb.usuarios" DataTypeServer="varchar(50)(50)" DbType="String" Direction="Input" ParameterName="@Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="Usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryUsuario" Modifier="Public" Name="InsertQueryUsuario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryUsuario">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO usuarios

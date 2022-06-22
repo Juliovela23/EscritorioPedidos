@@ -11,12 +11,13 @@ namespace UI
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
+        public static inicio.Login frm;
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new inicio.Login());
+            Application.Run(frm=new inicio.Login());
         }
     }
 }

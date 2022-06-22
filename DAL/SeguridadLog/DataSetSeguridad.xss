@@ -7,18 +7,18 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="9" ViewPortY="117" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:Login" ZOrder="1" X="431" Y="169" Height="305" Width="184" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
-    <Shape ID="DesignTable:usuarios" ZOrder="3" X="933" Y="140" Height="191" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
+    <Shape ID="DesignTable:usuarios" ZOrder="3" X="931" Y="139" Height="210" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:fk_usuariosXempleados" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>615</X>
-          <Y>250</Y>
+          <Y>249</Y>
         </Point>
         <Point>
-          <X>933</X>
-          <Y>250</Y>
+          <X>931</X>
+          <Y>249</Y>
         </Point>
       </RoutePoints>
     </Connector>

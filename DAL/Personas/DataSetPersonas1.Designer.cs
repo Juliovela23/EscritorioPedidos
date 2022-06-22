@@ -1295,52 +1295,17 @@ namespace DAL.Personas.DataSetPersonasTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[4];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        personas.*\r\nFROM            personas";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO personas\r\n                         (Nombres, Apellidos, Genero, Fecha" +
-                "_nacimiento, CUI, Telefono, Direccion)\r\nVALUES        (@Nombres, @Apellidos, @Ge" +
-                "nero, @Fecha_nacimiento, @CUI, @Telefono, @Direccion)";
+            this._commandCollection[1].CommandText = "SELECT        Id_personas, Nombres, Apellidos, Genero, Fecha_nacimiento, CUI, Tel" +
+                "efono, Direccion\r\nFROM            personas\r\nWHERE        (CUI = @CUI)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Nombres";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 50;
-            param.IsNullable = true;
-            param.SourceColumn = "Nombres";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Apellidos";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 50;
-            param.IsNullable = true;
-            param.SourceColumn = "Apellidos";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Genero";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int16;
-            param.IsNullable = true;
-            param.SourceColumn = "Genero";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@Fecha_nacimiento";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
-            param.IsNullable = true;
-            param.SourceColumn = "Fecha_nacimiento";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@CUI";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
@@ -1349,6 +1314,59 @@ namespace DAL.Personas.DataSetPersonasTableAdapters {
             param.SourceColumn = "CUI";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        personas.*\r\nFROM            personas order by Id_personas DESC";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "INSERT INTO personas\r\n                         (Nombres, Apellidos, Genero, Fecha" +
+                "_nacimiento, CUI, Telefono, Direccion)\r\nVALUES        (@Nombres, @Apellidos, @Ge" +
+                "nero, @Fecha_nacimiento, @CUI, @Telefono, @Direccion)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Nombres";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Nombres";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Apellidos";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Apellidos";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Genero";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int16;
+            param.IsNullable = true;
+            param.SourceColumn = "Genero";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Fecha_nacimiento";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "Fecha_nacimiento";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CUI";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 13;
+            param.IsNullable = true;
+            param.SourceColumn = "CUI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Telefono";
             param.DbType = global::System.Data.DbType.String;
@@ -1357,7 +1375,7 @@ namespace DAL.Personas.DataSetPersonasTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Telefono";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Direccion";
             param.DbType = global::System.Data.DbType.String;
@@ -1366,7 +1384,7 @@ namespace DAL.Personas.DataSetPersonasTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Direccion";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1375,6 +1393,34 @@ namespace DAL.Personas.DataSetPersonasTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSetPersonas.personasDataTable GetDataPersonas() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSetPersonas.personasDataTable dataTable = new DataSetPersonas.personasDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetPersonas.personasDataTable GetDatabyCUI(string CUI) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CUI == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(CUI));
+            }
+            DataSetPersonas.personasDataTable dataTable = new DataSetPersonas.personasDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetPersonas.personasDataTable GetDataByIdPersonas() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             DataSetPersonas.personasDataTable dataTable = new DataSetPersonas.personasDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -1685,7 +1731,7 @@ namespace DAL.Personas.DataSetPersonasTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertQueryPersonas(string Nombres, string Apellidos, global::System.Nullable<short> Genero, global::System.Nullable<global::System.DateTime> Fecha_nacimiento, string CUI, string Telefono, string Direccion) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[1];
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[3];
             if ((Nombres == null)) {
                 throw new global::System.ArgumentNullException("Nombres");
             }

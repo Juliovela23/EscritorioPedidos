@@ -1542,7 +1542,7 @@ FROM            usuarios INNER JOIN
                          personas ON empleados.Id_personas = personas.Id_personas";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._commandCollection[1].Connection = new global::MySql.Data.MySqlClient.MySqlConnection(global::DAL.Properties.Settings.Default.bd_pedidoswebConnectionString);
+            this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT        usuarios.Id_usuarios, usuarios.Usuario, usuarios.Password, personas.Id_personas, personas.Nombres, personas.Apellidos, personas.Telefono, empleados.Id_empleado, empleados.Estado, usuarios.Correo_electronico, 
                          personas.Genero
 FROM            usuarios INNER JOIN
@@ -1937,16 +1937,14 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        usuarios.*\r\nFROM            usuarios";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO usuarios\r\n                         (Usuario, Password, Correo_electro" +
-                "nico, Id_empleado)\r\nVALUES        (@Usuario, @Password, @Correo_electronico, @Id" +
-                "_empleado)";
+            this._commandCollection[1].CommandText = "SELECT        usuarios.*\r\nFROM            usuarios where Usuario = @Usuario\r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Usuario";
@@ -1957,6 +1955,21 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
             param.SourceColumn = "Usuario";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO usuarios\r\n                         (Usuario, Password, Correo_electro" +
+                "nico, Id_empleado)\r\nVALUES        (@Usuario, @Password, @Correo_electronico, @Id" +
+                "_empleado)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Usuario";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Usuario";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Password";
             param.DbType = global::System.Data.DbType.String;
@@ -1965,7 +1978,7 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
             param.IsNullable = true;
             param.SourceColumn = "Password";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Correo_electronico";
             param.DbType = global::System.Data.DbType.String;
@@ -1974,7 +1987,7 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
             param.IsNullable = true;
             param.SourceColumn = "Correo_electronico";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Id_empleado";
             param.DbType = global::System.Data.DbType.Int32;
@@ -1982,7 +1995,7 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
             param.IsNullable = true;
             param.SourceColumn = "Id_empleado";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1991,6 +2004,23 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSetSeguridad.usuariosDataTable GetDataUsuario() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSetSeguridad.usuariosDataTable dataTable = new DataSetSeguridad.usuariosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetSeguridad.usuariosDataTable GetDataByUser(string Usuario) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Usuario == null)) {
+                throw new global::System.ArgumentNullException("Usuario");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Usuario));
+            }
             DataSetSeguridad.usuariosDataTable dataTable = new DataSetSeguridad.usuariosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2030,7 +2060,7 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertQueryUsuario(string Usuario, string Password, string Correo_electronico, global::System.Nullable<int> Id_empleado) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[1];
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
             if ((Usuario == null)) {
                 throw new global::System.ArgumentNullException("Usuario");
             }

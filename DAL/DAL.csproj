@@ -67,12 +67,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetEmpleados.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Pedidos\DataSetPedidos.cs">
+      <DependentUpon>DataSetPedidos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Pedidos\DataSetPedidos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetPedidos.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Personas\DataSetPersonas.Designer.cs">
+    <Compile Include="Personas\DataSetPersonas1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetPersonas.xsd</DependentUpon>

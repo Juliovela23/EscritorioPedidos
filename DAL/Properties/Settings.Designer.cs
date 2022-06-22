@@ -33,15 +33,5 @@ namespace DAL.Properties {
                 return ((string)(this["bd_pedidoswebConnectionString"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=root;password=root;database=bd_pedidosweb")]
-        public string bd_pedidoswebConnectionString1 {
-            get {
-                return ((string)(this["bd_pedidoswebConnectionString1"]));
-            }
-        }
     }
 }

@@ -94,6 +94,7 @@
     <Compile Include="Pedidos\Models\det_pedidos.cs" />
     <Compile Include="Pedidos\Models\Pedidos.cs" />
     <Compile Include="Personas\Models\Personas.cs" />
+    <Compile Include="Personas\Validacion\ValidarPersona.cs" />
     <Compile Include="Productos\Commands\CreateProducto.cs" />
     <Compile Include="Productos\Models\Personas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
