@@ -333,6 +333,8 @@ namespace DAL.Pedidos {
             
             private global::System.Data.DataColumn columnId_cliente;
             
+            private global::System.Data.DataColumn columnNumero_de_orden;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public pedidosDataTable() {
@@ -416,6 +418,14 @@ namespace DAL.Pedidos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Numero_de_ordenColumn {
+                get {
+                    return this.columnNumero_de_orden;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -451,7 +461,7 @@ namespace DAL.Pedidos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public pedidosRow AddpedidosRow(System.DateTime Fecha_pedido, string Estado_pedido, decimal Monto_total, int Id_usuarios, int Id_cliente) {
+            public pedidosRow AddpedidosRow(System.DateTime Fecha_pedido, string Estado_pedido, decimal Monto_total, int Id_usuarios, int Id_cliente, string Numero_de_orden) {
                 pedidosRow rowpedidosRow = ((pedidosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -459,7 +469,8 @@ namespace DAL.Pedidos {
                         Estado_pedido,
                         Monto_total,
                         Id_usuarios,
-                        Id_cliente};
+                        Id_cliente,
+                        Numero_de_orden};
                 rowpedidosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpedidosRow);
                 return rowpedidosRow;
@@ -495,6 +506,7 @@ namespace DAL.Pedidos {
                 this.columnMonto_total = base.Columns["Monto_total"];
                 this.columnId_usuarios = base.Columns["Id_usuarios"];
                 this.columnId_cliente = base.Columns["Id_cliente"];
+                this.columnNumero_de_orden = base.Columns["Numero_de_orden"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -512,6 +524,8 @@ namespace DAL.Pedidos {
                 base.Columns.Add(this.columnId_usuarios);
                 this.columnId_cliente = new global::System.Data.DataColumn("Id_cliente", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId_cliente);
+                this.columnNumero_de_orden = new global::System.Data.DataColumn("Numero_de_orden", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumero_de_orden);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId_pedidos}, true));
                 this.columnId_pedidos.AutoIncrement = true;
@@ -523,6 +537,8 @@ namespace DAL.Pedidos {
                 this.columnEstado_pedido.AllowDBNull = false;
                 this.columnEstado_pedido.MaxLength = 30;
                 this.columnMonto_total.AllowDBNull = false;
+                this.columnNumero_de_orden.AllowDBNull = false;
+                this.columnNumero_de_orden.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1063,6 +1079,17 @@ namespace DAL.Pedidos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Numero_de_orden {
+                get {
+                    return ((string)(this[this.tablepedidos.Numero_de_ordenColumn]));
+                }
+                set {
+                    this[this.tablepedidos.Numero_de_ordenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsId_usuariosNull() {
                 return this.IsNull(this.tablepedidos.Id_usuariosColumn);
             }
@@ -1411,10 +1438,11 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             tableMapping.ColumnMappings.Add("Monto_total", "Monto_total");
             tableMapping.ColumnMappings.Add("Id_usuarios", "Id_usuarios");
             tableMapping.ColumnMappings.Add("Id_cliente", "Id_cliente");
+            tableMapping.ColumnMappings.Add("Numero_de_orden", "Numero_de_orden");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `pedidos` WHERE ((`Id_pedidos` = @p1) AND (`Fecha_pedido` = @p2) AND (`Estado_pedido` = @p3) AND (`Monto_total` = @p4) AND ((@p5 = 1 AND `Id_usuarios` IS NULL) OR (`Id_usuarios` = @p6)) AND ((@p7 = 1 AND `Id_cliente` IS NULL) OR (`Id_cliente` = @p8)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `pedidos` WHERE ((`Id_pedidos` = @p1) AND (`Numero_de_orden` = @p2) AND (`Fecha_pedido` = @p3) AND (`Estado_pedido` = @p4) AND (`Monto_total` = @p5) AND ((@p6 = 1 AND `Id_usuarios` IS NULL) OR (`Id_usuarios` = @p7)) AND ((@p8 = 1 AND `Id_cliente` IS NULL) OR (`Id_cliente` = @p9)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -1426,6 +1454,14 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p2";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "Numero_de_orden";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -1433,7 +1469,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p3";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -1441,21 +1477,12 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
+            param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.Decimal;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.NewDecimal;
             param.IsNullable = true;
             param.SourceColumn = "Monto_total";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "Id_usuarios";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p6";
@@ -1464,9 +1491,18 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Id_usuarios";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p7";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_usuarios";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p8";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -1475,7 +1511,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -1484,11 +1520,19 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `pedidos` (`Fecha_pedido`, `Estado_pedido`, `Monto_total`, `Id_usuari" +
-                "os`, `Id_cliente`) VALUES (@p1, @p2, @p3, @p4, @p5)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `pedidos` (`Numero_de_orden`, `Fecha_pedido`, `Estado_pedido`, `Monto" +
+                "_total`, `Id_usuarios`, `Id_cliente`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "Numero_de_orden";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -1496,7 +1540,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p2";
+            param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -1504,7 +1548,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p3";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Decimal;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.NewDecimal;
             param.IsNullable = true;
@@ -1512,7 +1556,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
+            param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -1520,7 +1564,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
+            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -1529,10 +1573,18 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `pedidos` SET `Fecha_pedido` = @p1, `Estado_pedido` = @p2, `Monto_total` = @p3, `Id_usuarios` = @p4, `Id_cliente` = @p5 WHERE ((`Id_pedidos` = @p6) AND (`Fecha_pedido` = @p7) AND (`Estado_pedido` = @p8) AND (`Monto_total` = @p9) AND ((@p10 = 1 AND `Id_usuarios` IS NULL) OR (`Id_usuarios` = @p11)) AND ((@p12 = 1 AND `Id_cliente` IS NULL) OR (`Id_cliente` = @p13)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `pedidos` SET `Numero_de_orden` = @p1, `Fecha_pedido` = @p2, `Estado_pedido` = @p3, `Monto_total` = @p4, `Id_usuarios` = @p5, `Id_cliente` = @p6 WHERE ((`Id_pedidos` = @p7) AND (`Numero_de_orden` = @p8) AND (`Fecha_pedido` = @p9) AND (`Estado_pedido` = @p10) AND (`Monto_total` = @p11) AND ((@p12 = 1 AND `Id_usuarios` IS NULL) OR (`Id_usuarios` = @p13)) AND ((@p14 = 1 AND `Id_cliente` IS NULL) OR (`Id_cliente` = @p15)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "Numero_de_orden";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p2";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -1540,7 +1592,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p2";
+            param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -1548,19 +1600,11 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p3";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Decimal;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.NewDecimal;
             param.IsNullable = true;
             param.SourceColumn = "Monto_total";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "Id_usuarios";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -1568,7 +1612,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Id_cliente";
+            param.SourceColumn = "Id_usuarios";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -1576,15 +1620,15 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Id_pedidos";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumn = "Id_cliente";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p7";
-            param.DbType = global::System.Data.DbType.Date;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Fecha_pedido";
+            param.SourceColumn = "Id_pedidos";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -1592,11 +1636,27 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
-            param.SourceColumn = "Estado_pedido";
+            param.SourceColumn = "Numero_de_orden";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p9";
+            param.DbType = global::System.Data.DbType.Date;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "Fecha_pedido";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p10";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "Estado_pedido";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p11";
             param.DbType = global::System.Data.DbType.Decimal;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.NewDecimal;
             param.IsNullable = true;
@@ -1604,7 +1664,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p12";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -1613,7 +1673,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p11";
+            param.ParameterName = "@p13";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -1621,7 +1681,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
+            param.ParameterName = "@p14";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -1630,7 +1690,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p13";
+            param.ParameterName = "@p15";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -1649,29 +1709,43 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[5];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        pedidos.*\r\nFROM            pedidos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        pedidos.*\r\nFROM            pedidos ORDER BY Id_pedidos DESC";
+            this._commandCollection[1].CommandText = "SELECT        pedidos.*\r\nFROM            pedidos\r\nWHERE        (Id_pedidos = @Id_" +
+                "pedidos)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Id_pedidos";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_pedidos";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[1].Parameters.Add(param);
             this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO pedidos\r\n                         (Fecha_pedido, Estado_pedido, Monto" +
-                "_total, Id_usuarios, Id_cliente)\r\nVALUES        (@Fecha_pedido, @Estado_pedido, " +
-                "@Monto_total, @Id_usuarios, @Id_cliente)";
+            this._commandCollection[2].CommandText = "SELECT Estado_pedido, Fecha_pedido, Id_cliente, Id_pedidos, Id_usuarios, Monto_to" +
+                "tal, Numero_de_orden FROM pedidos ORDER BY Id_pedidos DESC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "INSERT INTO pedidos\r\n                         (Fecha_pedido, Estado_pedido, Monto" +
+                "_total, Id_usuarios, Id_cliente, Numero_de_orden)\r\nVALUES        (@Fecha_pedido," +
+                " @Estado_pedido, @Monto_total, @Id_usuarios, @Id_cliente, @Numero_de_orden)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Fecha_pedido";
             param.DbType = global::System.Data.DbType.DateTime;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
             param.SourceColumn = "Fecha_pedido";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Estado_pedido";
             param.DbType = global::System.Data.DbType.String;
@@ -1680,7 +1754,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Estado_pedido";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Monto_total";
             param.DbType = global::System.Data.DbType.Decimal;
@@ -1688,7 +1762,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Monto_total";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Id_usuarios";
             param.DbType = global::System.Data.DbType.Int32;
@@ -1696,7 +1770,7 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Id_usuarios";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Id_cliente";
             param.DbType = global::System.Data.DbType.Int32;
@@ -1704,7 +1778,64 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "Id_cliente";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Numero_de_orden";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Numero_de_orden";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            this._commandCollection[4] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "UPDATE       pedidos\r\nSET                Fecha_pedido = @Fecha_pedido, Estado_ped" +
+                "ido = @Estado_pedido, Id_cliente = @Id_cliente, Numero_de_orden = @Numero_de_ord" +
+                "en\r\nWHERE        (Id_pedidos = @d_pedidos)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Fecha_pedido";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "Fecha_pedido";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[4].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Estado_pedido";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 30;
+            param.IsNullable = true;
+            param.SourceColumn = "Estado_pedido";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[4].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Id_cliente";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_cliente";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[4].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Numero_de_orden";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Numero_de_orden";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[4].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@d_pedidos";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_pedidos";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._commandCollection[4].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1722,8 +1853,20 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetPedidos.pedidosDataTable GetUltimoinsert() {
+        public virtual DataSetPedidos.pedidosDataTable GetDataById(int Id_pedidos) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id_pedidos));
+            DataSetPedidos.pedidosDataTable dataTable = new DataSetPedidos.pedidosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetPedidos.pedidosDataTable GetUltimoinsert() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             DataSetPedidos.pedidosDataTable dataTable = new DataSetPedidos.pedidosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -1762,31 +1905,37 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int p1, System.DateTime p2, string p3, decimal p4, global::System.Nullable<int> p6, global::System.Nullable<int> p8) {
+        public virtual int Delete(int p1, string p2, System.DateTime p3, string p4, decimal p5, global::System.Nullable<int> p7, global::System.Nullable<int> p9) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(p2));
-            if ((p3 == null)) {
-                throw new global::System.ArgumentNullException("p3");
+            if ((p2 == null)) {
+                throw new global::System.ArgumentNullException("p2");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(p3));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(p2));
             }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(p4));
-            if ((p6.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(p6.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((p8.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(p8.Value));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(p3));
+            if ((p4 == null)) {
+                throw new global::System.ArgumentNullException("p4");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(p4));
+            }
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(p5));
+            if ((p7.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(p7.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((p9.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(p9.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1808,26 +1957,32 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime p1, string p2, decimal p3, global::System.Nullable<int> p4, global::System.Nullable<int> p5) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(p1));
-            if ((p2 == null)) {
-                throw new global::System.ArgumentNullException("p2");
+        public virtual int Insert(string p1, System.DateTime p2, string p3, decimal p4, global::System.Nullable<int> p5, global::System.Nullable<int> p6) {
+            if ((p1 == null)) {
+                throw new global::System.ArgumentNullException("p1");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p2));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(p1));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(p3));
-            if ((p4.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(p4.Value));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(p2));
+            if ((p3 == null)) {
+                throw new global::System.ArgumentNullException("p3");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(p3));
             }
+            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(p4));
             if ((p5.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((int)(p5.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((p6.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(p6.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1849,44 +2004,48 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime p1, string p2, decimal p3, global::System.Nullable<int> p4, global::System.Nullable<int> p5, int p6, System.DateTime p7, string p8, decimal p9, global::System.Nullable<int> p11, global::System.Nullable<int> p13) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(p1));
-            if ((p2 == null)) {
-                throw new global::System.ArgumentNullException("p2");
+        public virtual int Update(string p1, System.DateTime p2, string p3, decimal p4, global::System.Nullable<int> p5, global::System.Nullable<int> p6, int p7, string p8, System.DateTime p9, string p10, decimal p11, global::System.Nullable<int> p13, global::System.Nullable<int> p15) {
+            if ((p1 == null)) {
+                throw new global::System.ArgumentNullException("p1");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p2));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(p1));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(p3));
-            if ((p4.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(p4.Value));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(p2));
+            if ((p3 == null)) {
+                throw new global::System.ArgumentNullException("p3");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(p3));
             }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(p4));
             if ((p5.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(p5.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(p7));
+            if ((p6.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(p7));
             if ((p8 == null)) {
                 throw new global::System.ArgumentNullException("p8");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(p8));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(p9));
-            if ((p11.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(p11.Value));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(p9));
+            if ((p10 == null)) {
+                throw new global::System.ArgumentNullException("p10");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(p10));
             }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(p11));
             if ((p13.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(p13.Value));
@@ -1894,6 +2053,14 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((p15.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(p15.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1915,8 +2082,8 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertQueryPedido(System.DateTime Fecha_pedido, string Estado_pedido, decimal Monto_total, global::System.Nullable<int> Id_usuarios, global::System.Nullable<int> Id_cliente) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
+        public virtual int InsertQueryPedido(System.DateTime Fecha_pedido, string Estado_pedido, decimal Monto_total, global::System.Nullable<int> Id_usuarios, global::System.Nullable<int> Id_cliente, string Numero_de_orden) {
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[3];
             command.Parameters[0].Value = ((System.DateTime)(Fecha_pedido));
             if ((Estado_pedido == null)) {
                 throw new global::System.ArgumentNullException("Estado_pedido");
@@ -1937,6 +2104,55 @@ namespace DAL.Pedidos.DataSetPedidosTableAdapters {
             else {
                 command.Parameters[4].Value = global::System.DBNull.Value;
             }
+            if ((Numero_de_orden == null)) {
+                throw new global::System.ArgumentNullException("Numero_de_orden");
+            }
+            else {
+                command.Parameters[5].Value = ((string)(Numero_de_orden));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQueryPedidos(System.DateTime Fecha_pedido, string Estado_pedido, global::System.Nullable<int> Id_cliente, string Numero_de_orden, int d_pedidos) {
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[4];
+            command.Parameters[0].Value = ((System.DateTime)(Fecha_pedido));
+            if ((Estado_pedido == null)) {
+                throw new global::System.ArgumentNullException("Estado_pedido");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Estado_pedido));
+            }
+            if ((Id_cliente.HasValue == true)) {
+                command.Parameters[2].Value = ((int)(Id_cliente.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Numero_de_orden == null)) {
+                throw new global::System.ArgumentNullException("Numero_de_orden");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(Numero_de_orden));
+            }
+            command.Parameters[4].Value = ((int)(d_pedidos));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

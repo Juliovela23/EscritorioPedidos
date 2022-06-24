@@ -85,17 +85,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ciudades\Commands\CreateCiudades.cs" />
+    <Compile Include="Ciudades\Commands\ListarCiudades.cs" />
+    <Compile Include="Ciudades\Commands\UpdateCiudad.cs" />
     <Compile Include="Ciudades\Models\Ciudades.cs" />
     <Compile Include="Clientes\Commands\CreateCliente.cs" />
+    <Compile Include="Clientes\Commands\ListadoClientes.cs" />
+    <Compile Include="Clientes\Commands\UpdateCliente.cs" />
     <Compile Include="Clientes\Models\Clientes.cs" />
     <Compile Include="Empleados\Commands\CreateEmpleados.cs" />
+    <Compile Include="Empleados\Commands\ListarEmpleado.cs" />
+    <Compile Include="Empleados\Commands\UpdateEmpleado.cs" />
     <Compile Include="Empleados\Models\Empleados.cs" />
     <Compile Include="Pedidos\Commands\CreatePedido.cs" />
+    <Compile Include="Pedidos\Commands\ListadoPedidos.cs" />
+    <Compile Include="Pedidos\Commands\UpdatePedidos.cs" />
     <Compile Include="Pedidos\Models\det_pedidos.cs" />
     <Compile Include="Pedidos\Models\Pedidos.cs" />
     <Compile Include="Personas\Models\Personas.cs" />
     <Compile Include="Personas\Validacion\ValidarPersona.cs" />
     <Compile Include="Productos\Commands\CreateProducto.cs" />
+    <Compile Include="Productos\Commands\ListadoProductos.cs" />
+    <Compile Include="Productos\Commands\UpdateProductos.cs" />
     <Compile Include="Productos\Models\Personas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeguridadLog\Commands\CreateUsuarios.cs" />

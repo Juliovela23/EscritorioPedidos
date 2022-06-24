@@ -52,15 +52,24 @@
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ciudades\DataSetCiudades.cs">
+      <DependentUpon>DataSetCiudades.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Ciudades\DataSetCiudades.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetCiudades.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Clientes\DataSetClientes.cs">
+      <DependentUpon>DataSetClientes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Clientes\DataSetClientes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetClientes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados\DataSetEmpleados.cs">
+      <DependentUpon>DataSetEmpleados.xsd</DependentUpon>
     </Compile>
     <Compile Include="Empleados\DataSetEmpleados.Designer.cs">
       <AutoGen>True</AutoGen>

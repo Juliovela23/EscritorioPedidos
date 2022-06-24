@@ -33,6 +33,8 @@ namespace UI.Empleados
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.ButGuardar = new System.Windows.Forms.Button();
             this.GrupoUsuario = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -62,8 +64,6 @@ namespace UI.Empleados
             this.txt_Apellidos = new System.Windows.Forms.TextBox();
             this.txt_Nombre = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -80,14 +80,14 @@ namespace UI.Empleados
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(858, 23);
+            this.panel1.Size = new System.Drawing.Size(875, 23);
             this.panel1.TabIndex = 57;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(824, 0);
+            this.panel2.Location = new System.Drawing.Point(841, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(34, 23);
@@ -123,8 +123,34 @@ namespace UI.Empleados
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 23);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(858, 412);
+            this.panel3.Size = new System.Drawing.Size(875, 430);
             this.panel3.TabIndex = 58;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label13.Location = new System.Drawing.Point(615, 204);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 17);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "Soporte:";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label14.Location = new System.Drawing.Point(614, 221);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(257, 84);
+            this.label14.TabIndex = 48;
+            this.label14.Text = "OJO el DPI es unico por persona\r\nEl usuario no se puede repetir\r\n\r\n\r\n";
             // 
             // ButGuardar
             // 
@@ -136,7 +162,7 @@ namespace UI.Empleados
             this.ButGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButGuardar.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButGuardar.ForeColor = System.Drawing.Color.Yellow;
-            this.ButGuardar.Location = new System.Drawing.Point(459, 163);
+            this.ButGuardar.Location = new System.Drawing.Point(486, 221);
             this.ButGuardar.Name = "ButGuardar";
             this.ButGuardar.Size = new System.Drawing.Size(96, 29);
             this.ButGuardar.TabIndex = 42;
@@ -159,7 +185,7 @@ namespace UI.Empleados
             this.GrupoUsuario.Enabled = false;
             this.GrupoUsuario.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GrupoUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(89)))), ((int)(((byte)(85)))));
-            this.GrupoUsuario.Location = new System.Drawing.Point(450, -3);
+            this.GrupoUsuario.Location = new System.Drawing.Point(456, 24);
             this.GrupoUsuario.Name = "GrupoUsuario";
             this.GrupoUsuario.Size = new System.Drawing.Size(394, 161);
             this.GrupoUsuario.TabIndex = 45;
@@ -246,7 +272,7 @@ namespace UI.Empleados
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::UI.Properties.Resources.empleado_del_mes;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(30, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 45);
@@ -274,7 +300,7 @@ namespace UI.Empleados
             this.Grupo_personal.Controls.Add(this.txt_Nombre);
             this.Grupo_personal.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Grupo_personal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(89)))), ((int)(((byte)(85)))));
-            this.Grupo_personal.Location = new System.Drawing.Point(6, 48);
+            this.Grupo_personal.Location = new System.Drawing.Point(14, 57);
             this.Grupo_personal.Name = "Grupo_personal";
             this.Grupo_personal.Size = new System.Drawing.Size(426, 355);
             this.Grupo_personal.TabIndex = 44;
@@ -424,41 +450,17 @@ namespace UI.Empleados
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(78, 4);
+            this.label7.Location = new System.Drawing.Point(86, 13);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(272, 30);
             this.label7.TabIndex = 43;
             this.label7.Text = "Registro de empleado";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label13.Location = new System.Drawing.Point(439, 225);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 17);
-            this.label13.TabIndex = 47;
-            this.label13.Text = "Soporte:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label14.Location = new System.Drawing.Point(439, 252);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(257, 84);
-            this.label14.TabIndex = 48;
-            this.label14.Text = "OJO el DPI es unico por persona\r\nEl usuario no se puede repetir\r\n\r\n\r\n";
-            // 
             // CrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 435);
+            this.ClientSize = new System.Drawing.Size(875, 453);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

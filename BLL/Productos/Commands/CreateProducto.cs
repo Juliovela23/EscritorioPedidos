@@ -13,9 +13,11 @@ namespace BLL.Productos.Commands
     public class CreateProducto
     {
         private productosTableAdapter logicaProducto;
+        private categoria_productosTableAdapter logicaCarProducto;
         public CreateProducto()
         {
             logicaProducto = new productosTableAdapter();
+            logicaCarProducto = new categoria_productosTableAdapter();
         }
         public string CrearProducto(string Nombre_producto, string Descripcion_producto, decimal Precio_p, string Marca, int? Id_categoriaP)
         {
@@ -30,6 +32,30 @@ namespace BLL.Productos.Commands
                     
                     respuesta = "Producto creado con exito";
                     Tran.Complete();
+
+                }
+                catch (Exception error)
+                {
+
+                    respuesta = "ERROR:" + error.Message;
+                }
+            }
+            return respuesta;
+        }
+        public string CrearCATProducto(string Nombre_cat, string Descripcion_categoria)
+        {
+            string respuesta = "";
+            TransactionScope Tran = new TransactionScope();
+            using (Tran)
+            {
+                try
+                {
+
+                    logicaCarProducto.InsertQueryCategoriaP(Nombre_cat, Descripcion_categoria);
+
+                    respuesta = "Categoria creada con exito";
+                    Tran.Complete();
+
 
                 }
                 catch (Exception error)

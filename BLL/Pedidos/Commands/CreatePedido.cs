@@ -41,7 +41,7 @@ namespace BLL.Pedidos.Commands
                 return -1;
             }
         }
-        public string CreaPedido(DateTime Fecha_pedido, decimal Monto_total, int? Id_usuarios, int? Id_cliente, List<det_pedidos> listado)
+        public string CreaPedido(DateTime Fecha_pedido, decimal Monto_total, int? Id_usuarios, int? Id_cliente, List<det_pedidos> listado,string numeroOrden)
         {
             string respuesta = "";
             TransactionScope Tran = new TransactionScope();
@@ -50,7 +50,7 @@ namespace BLL.Pedidos.Commands
                 try
                 {
 
-                    logicapedido.InsertQueryPedido(Fecha_pedido,"En proceso",Monto_total,Id_usuarios,Id_cliente);
+                    logicapedido.InsertQueryPedido(Fecha_pedido,"En proceso",Monto_total,Id_usuarios,Id_cliente, numeroOrden);
                     ultimo_id();
                     foreach (det_pedidos info in listado)
                     {

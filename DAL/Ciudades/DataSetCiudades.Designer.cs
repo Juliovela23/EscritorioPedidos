@@ -1224,18 +1224,30 @@ namespace DAL.Ciudades.DataSetCiudadesTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[4];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        ciudades.*\r\nFROM            ciudades";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"INSERT INTO ciudades
-                         (Nombre_ciudad, Pais, Region_O_Departamento, Elevacion_sobre_Mar, Indice_robos, Ingresos_promedio)
-VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_Mar, @Indice_robos, @Ingresos_promedio)";
+            this._commandCollection[1].CommandText = "SELECT        ciudades.*\r\nFROM            ciudades where Id_ciudad=@Id_ciudad";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Id_ciudad";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_ciudad";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"INSERT INTO ciudades
+                         (Nombre_ciudad, Pais, Region_O_Departamento, Elevacion_sobre_Mar, Indice_robos, Ingresos_promedio)
+VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_Mar, @Indice_robos, @Ingresos_promedio)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Nombre_ciudad";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
@@ -1243,7 +1255,7 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
             param.IsNullable = true;
             param.SourceColumn = "Nombre_ciudad";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Pais";
             param.DbType = global::System.Data.DbType.String;
@@ -1252,7 +1264,7 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
             param.IsNullable = true;
             param.SourceColumn = "Pais";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Region_O_Departamento";
             param.DbType = global::System.Data.DbType.String;
@@ -1261,7 +1273,7 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
             param.IsNullable = true;
             param.SourceColumn = "Region_O_Departamento";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Elevacion_sobre_Mar";
             param.DbType = global::System.Data.DbType.String;
@@ -1270,7 +1282,7 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
             param.IsNullable = true;
             param.SourceColumn = "Elevacion_sobre_Mar";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Indice_robos";
             param.DbType = global::System.Data.DbType.String;
@@ -1279,7 +1291,7 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
             param.IsNullable = true;
             param.SourceColumn = "Indice_robos";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Ingresos_promedio";
             param.DbType = global::System.Data.DbType.String;
@@ -1288,7 +1300,76 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
             param.IsNullable = true;
             param.SourceColumn = "Ingresos_promedio";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"UPDATE       ciudades
+SET                Nombre_ciudad = @Nombre_ciudad, Pais = @Pais, Region_O_Departamento = @Region_O_Departamento, Elevacion_sobre_Mar = @Elevacion_sobre_Mar, Indice_robos = @Indice_robos, 
+                         Ingresos_promedio = @Ingresos_promedio
+WHERE        (Id_ciudad = @Id_ciudad)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Nombre_ciudad";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Nombre_ciudad";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Pais";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Pais";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Region_O_Departamento";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 80;
+            param.IsNullable = true;
+            param.SourceColumn = "Region_O_Departamento";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Elevacion_sobre_Mar";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 100;
+            param.IsNullable = true;
+            param.SourceColumn = "Elevacion_sobre_Mar";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Indice_robos";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Indice_robos";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Ingresos_promedio";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Ingresos_promedio";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Id_ciudad";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_ciudad";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._commandCollection[3].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1297,6 +1378,18 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSetCiudades.ciudadesDataTable GetDataCiudades() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSetCiudades.ciudadesDataTable dataTable = new DataSetCiudades.ciudadesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetCiudades.ciudadesDataTable GetDataById_ciudad(int Id_ciudad) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id_ciudad));
             DataSetCiudades.ciudadesDataTable dataTable = new DataSetCiudades.ciudadesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -1557,7 +1650,7 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertQueryCiudad(string Nombre_ciudad, string Pais, string Region_O_Departamento, string Elevacion_sobre_Mar, string Indice_robos, string Ingresos_promedio) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[1];
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
             if ((Nombre_ciudad == null)) {
                 throw new global::System.ArgumentNullException("Nombre_ciudad");
             }
@@ -1594,6 +1687,66 @@ VALUES        (@Nombre_ciudad, @Pais, @Region_O_Departamento, @Elevacion_sobre_M
             else {
                 command.Parameters[5].Value = ((string)(Ingresos_promedio));
             }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQueryCiudad(string Nombre_ciudad, string Pais, string Region_O_Departamento, string Elevacion_sobre_Mar, string Indice_robos, string Ingresos_promedio, int Id_ciudad) {
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[3];
+            if ((Nombre_ciudad == null)) {
+                throw new global::System.ArgumentNullException("Nombre_ciudad");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Nombre_ciudad));
+            }
+            if ((Pais == null)) {
+                throw new global::System.ArgumentNullException("Pais");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Pais));
+            }
+            if ((Region_O_Departamento == null)) {
+                throw new global::System.ArgumentNullException("Region_O_Departamento");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Region_O_Departamento));
+            }
+            if ((Elevacion_sobre_Mar == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(Elevacion_sobre_Mar));
+            }
+            if ((Indice_robos == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(Indice_robos));
+            }
+            if ((Ingresos_promedio == null)) {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[5].Value = ((string)(Ingresos_promedio));
+            }
+            command.Parameters[6].Value = ((int)(Id_ciudad));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

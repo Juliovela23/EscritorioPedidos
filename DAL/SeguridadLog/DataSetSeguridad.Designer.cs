@@ -1532,7 +1532,7 @@ namespace DAL.SeguridadLog.DataSetSeguridadTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        usuarios.Id_usuarios, usuarios.Usuario, usuarios.Password, personas.Id_personas, personas.Nombres, personas.Apellidos, personas.Telefono, empleados.Id_empleado, empleados.Estado, usuarios.Correo_electronico, 
@@ -1548,9 +1548,26 @@ FROM            usuarios INNER JOIN
 FROM            usuarios INNER JOIN
                          empleados ON usuarios.Id_empleado = empleados.Id_empleado INNER JOIN
                          personas ON empleados.Id_personas = personas.Id_personas
-WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios.Password = @pass)";
+WHERE        (usuarios.Id_usuarios = @Id_user)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Id_user";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_usuarios";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        usuarios.Id_usuarios, usuarios.Usuario, usuarios.Password, personas.Id_personas, personas.Nombres, personas.Apellidos, personas.Telefono, empleados.Id_empleado, empleados.Estado, usuarios.Correo_electronico, 
+                         personas.Genero
+FROM            usuarios INNER JOIN
+                         empleados ON usuarios.Id_empleado = empleados.Id_empleado INNER JOIN
+                         personas ON empleados.Id_personas = personas.Id_personas
+WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios.Password = @pass)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@user";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
@@ -1558,7 +1575,7 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
             param.IsNullable = true;
             param.SourceColumn = "Usuario";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@pass";
             param.DbType = global::System.Data.DbType.String;
@@ -1567,7 +1584,7 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
             param.IsNullable = true;
             param.SourceColumn = "Password";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1585,8 +1602,20 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetSeguridad.LoginDataTable GetDataLogin(string user, string pass) {
+        public virtual DataSetSeguridad.LoginDataTable GetDataByIdUser(int Id_user) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id_user));
+            DataSetSeguridad.LoginDataTable dataTable = new DataSetSeguridad.LoginDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSetSeguridad.LoginDataTable GetDataLogin(string user, string pass) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((user == null)) {
                 throw new global::System.ArgumentNullException("user");
             }
@@ -1937,7 +1966,7 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[4];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        usuarios.*\r\nFROM            usuarios";
@@ -1996,6 +2025,55 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
             param.SourceColumn = "Id_empleado";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "UPDATE       usuarios\r\nSET                Usuario = @Usuario, Password = @Passwor" +
+                "d, Correo_electronico = @Correo_electronico, Id_empleado = @Id_empleado\r\nWHERE  " +
+                "      (Id_usuarios = @Id_usuarios)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Usuario";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "Usuario";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Password";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 16;
+            param.IsNullable = true;
+            param.SourceColumn = "Password";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Correo_electronico";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 100;
+            param.IsNullable = true;
+            param.SourceColumn = "Correo_electronico";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Id_empleado";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_empleado";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Id_usuarios";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Id_usuarios";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._commandCollection[3].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2085,6 +2163,54 @@ WHERE        (empleados.Estado = 1) AND (usuarios.Usuario = @user) AND (usuarios
             else {
                 command.Parameters[3].Value = global::System.DBNull.Value;
             }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQueryUsuarios(string Usuario, string Password, string Correo_electronico, global::System.Nullable<int> Id_empleado, int Id_usuarios) {
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[3];
+            if ((Usuario == null)) {
+                throw new global::System.ArgumentNullException("Usuario");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Usuario));
+            }
+            if ((Password == null)) {
+                throw new global::System.ArgumentNullException("Password");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Password));
+            }
+            if ((Correo_electronico == null)) {
+                throw new global::System.ArgumentNullException("Correo_electronico");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Correo_electronico));
+            }
+            if ((Id_empleado.HasValue == true)) {
+                command.Parameters[3].Value = ((int)(Id_empleado.Value));
+            }
+            else {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            command.Parameters[4].Value = ((int)(Id_usuarios));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

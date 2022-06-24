@@ -24,7 +24,7 @@ namespace UI
             lblBV.Text = "";
             lblEstado.Text = "Estamos preparando todo";
 
-            if (Usuario.Genero == 0)
+            if (Usuario.Genero == 1)
                 lblBV.Text = "Bienvenida";
             else
                 lblBV.Text = "Bienvenido";

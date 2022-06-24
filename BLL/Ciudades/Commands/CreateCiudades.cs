@@ -16,6 +16,11 @@ namespace BLL.Ciudades.Commands
         {
             logicaCiudad = new ciudadesTableAdapter();
         }
+        public DataTable listadoCiudad()
+        {
+            return logicaCiudad.GetDataCiudades();
+
+        }
         public string CrearCiudad(string Nombre_ciudad, string Pais, string Region_O_Departamento, string Elevacion_sobre_Mar, string Indice_robos, string Ingresos_promedio)
         {
             string respuesta = "";

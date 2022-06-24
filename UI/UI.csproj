@@ -33,8 +33,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.10.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.10\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +81,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ciudades\CrearCiudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ciudades\CrearCiudad.Designer.cs">
+      <DependentUpon>CrearCiudad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ciudades\EditarCiudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ciudades\EditarCiudad.Designer.cs">
+      <DependentUpon>EditarCiudad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\CrearCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\CrearCliente.Designer.cs">
+      <DependentUpon>CrearCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\EsitaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\EsitaCliente.Designer.cs">
+      <DependentUpon>EsitaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Empleados\CrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Empleados\CrearUsuario.Designer.cs">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados\EditarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleados\EditarEmpleado.Designer.cs">
+      <DependentUpon>EditarEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -70,10 +135,62 @@
     <Compile Include="inicio\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pedidos\CrearPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\CrearPedido.Designer.cs">
+      <DependentUpon>CrearPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\EditarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\EditarPedido.Designer.cs">
+      <DependentUpon>EditarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\Categorias_productos\EditarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\Categorias_productos\EditarCategoria.Designer.cs">
+      <DependentUpon>EditarCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\Categorias_productos\NuevaCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\Categorias_productos\NuevaCategoria.Designer.cs">
+      <DependentUpon>NuevaCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\CrearProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\CrearProductos.Designer.cs">
+      <DependentUpon>CrearProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\EditarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\EditarProducto.Designer.cs">
+      <DependentUpon>EditarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ciudades\CrearCiudad.resx">
+      <DependentUpon>CrearCiudad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ciudades\EditarCiudad.resx">
+      <DependentUpon>EditarCiudad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ciudades\RepCiudades\ClientesPorCiudad.rdlc" />
+    <EmbeddedResource Include="Cliente\CrearCliente.resx">
+      <DependentUpon>CrearCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\EsitaCliente.resx">
+      <DependentUpon>EsitaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Empleados\CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleados\EditarEmpleado.resx">
+      <DependentUpon>EditarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -83,6 +200,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="inicio\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\CrearPedido.resx">
+      <DependentUpon>CrearPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\EditarPedido.resx">
+      <DependentUpon>EditarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\Categorias_productos\EditarCategoria.resx">
+      <DependentUpon>EditarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\Categorias_productos\NuevaCategoria.resx">
+      <DependentUpon>NuevaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\CrearProductos.resx">
+      <DependentUpon>CrearProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\EditarProducto.resx">
+      <DependentUpon>EditarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +229,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,6 +282,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\estar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ciudades\Vistas\" />
+    <Folder Include="RestApi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paquete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
