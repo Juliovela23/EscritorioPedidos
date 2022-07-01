@@ -186,7 +186,7 @@ WHERE        (Id_usuarios = @Id_usuarios)</CommandText>
   <xs:element name="DataSetSeguridad" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetSeguridad" msprop:Generator_UserDSName="DataSetSeguridad">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Login" msprop:Generator_TableClassName="LoginDataTable" msprop:Generator_TableVarName="tableLogin" msprop:Generator_TablePropName="Login" msprop:Generator_RowDeletingName="LoginRowDeleting" msprop:Generator_RowChangingName="LoginRowChanging" msprop:Generator_RowEvHandlerName="LoginRowChangeEventHandler" msprop:Generator_RowDeletedName="LoginRowDeleted" msprop:Generator_UserTableName="Login" msprop:Generator_RowChangedName="LoginRowChanged" msprop:Generator_RowEvArgName="LoginRowChangeEvent" msprop:Generator_RowClassName="LoginRow">
+        <xs:element name="Login" msprop:Generator_TableClassName="LoginDataTable" msprop:Generator_TableVarName="tableLogin" msprop:Generator_RowChangedName="LoginRowChanged" msprop:Generator_TablePropName="Login" msprop:Generator_RowDeletingName="LoginRowDeleting" msprop:Generator_RowChangingName="LoginRowChanging" msprop:Generator_RowEvHandlerName="LoginRowChangeEventHandler" msprop:Generator_RowDeletedName="LoginRowDeleted" msprop:Generator_RowClassName="LoginRow" msprop:Generator_UserTableName="Login" msprop:Generator_RowEvArgName="LoginRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_usuarios" msprop:Generator_ColumnVarNameInTable="columnId_usuarios" msprop:Generator_ColumnPropNameInRow="Id_usuarios" msprop:Generator_ColumnPropNameInTable="Id_usuariosColumn" msprop:Generator_UserColumnName="Id_usuarios" type="xs:int" />
@@ -239,7 +239,7 @@ WHERE        (Id_usuarios = @Id_usuarios)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="usuarios" msprop:Generator_TableClassName="usuariosDataTable" msprop:Generator_TableVarName="tableusuarios" msprop:Generator_TablePropName="usuarios" msprop:Generator_RowDeletingName="usuariosRowDeleting" msprop:Generator_RowChangingName="usuariosRowChanging" msprop:Generator_RowEvHandlerName="usuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="usuariosRowDeleted" msprop:Generator_UserTableName="usuarios" msprop:Generator_RowChangedName="usuariosRowChanged" msprop:Generator_RowEvArgName="usuariosRowChangeEvent" msprop:Generator_RowClassName="usuariosRow">
+        <xs:element name="usuarios" msprop:Generator_TableClassName="usuariosDataTable" msprop:Generator_TableVarName="tableusuarios" msprop:Generator_RowChangedName="usuariosRowChanged" msprop:Generator_TablePropName="usuarios" msprop:Generator_RowDeletingName="usuariosRowDeleting" msprop:Generator_RowChangingName="usuariosRowChanging" msprop:Generator_RowEvHandlerName="usuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="usuariosRowDeleted" msprop:Generator_RowClassName="usuariosRow" msprop:Generator_UserTableName="usuarios" msprop:Generator_RowEvArgName="usuariosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_usuarios" msprop:Generator_ColumnVarNameInTable="columnId_usuarios" msprop:Generator_ColumnPropNameInRow="Id_usuarios" msprop:Generator_ColumnPropNameInTable="Id_usuariosColumn" msprop:Generator_UserColumnName="Id_usuarios" type="xs:int" />
@@ -283,7 +283,7 @@ WHERE        (Id_usuarios = @Id_usuarios)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="fk_usuariosXempleados" msdata:parent="Login" msdata:child="usuarios" msdata:parentkey="Id_empleado" msdata:childkey="Id_empleado" msprop:Generator_UserChildTable="usuarios" msprop:Generator_ChildPropName="GetusuariosRows" msprop:Generator_UserRelationName="fk_usuariosXempleados" msprop:Generator_RelationVarName="relationfk_usuariosXempleados" msprop:Generator_UserParentTable="Login" msprop:Generator_ParentPropName="LoginRow" />
+      <msdata:Relationship name="fk_usuariosXempleados" msdata:parent="Login" msdata:child="usuarios" msdata:parentkey="Id_empleado" msdata:childkey="Id_empleado" msprop:Generator_UserChildTable="usuarios" msprop:Generator_ChildPropName="GetusuariosRows" msprop:Generator_UserRelationName="fk_usuariosXempleados" msprop:Generator_ParentPropName="LoginRow" msprop:Generator_RelationVarName="relationfk_usuariosXempleados" msprop:Generator_UserParentTable="Login" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

@@ -224,7 +224,7 @@ VALUES        (@Cantidad_pedida, @Precio_producto, @Id_pedidos, @Id_productos)</
   <xs:element name="DataSetPedidos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetPedidos" msprop:Generator_UserDSName="DataSetPedidos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="pedidos" msprop:Generator_TableClassName="pedidosDataTable" msprop:Generator_TableVarName="tablepedidos" msprop:Generator_RowChangedName="pedidosRowChanged" msprop:Generator_TablePropName="pedidos" msprop:Generator_RowDeletingName="pedidosRowDeleting" msprop:Generator_RowChangingName="pedidosRowChanging" msprop:Generator_RowEvHandlerName="pedidosRowChangeEventHandler" msprop:Generator_RowDeletedName="pedidosRowDeleted" msprop:Generator_RowClassName="pedidosRow" msprop:Generator_UserTableName="pedidos" msprop:Generator_RowEvArgName="pedidosRowChangeEvent">
+        <xs:element name="pedidos" msprop:Generator_TableClassName="pedidosDataTable" msprop:Generator_TableVarName="tablepedidos" msprop:Generator_TablePropName="pedidos" msprop:Generator_RowDeletingName="pedidosRowDeleting" msprop:Generator_RowChangingName="pedidosRowChanging" msprop:Generator_RowEvHandlerName="pedidosRowChangeEventHandler" msprop:Generator_RowDeletedName="pedidosRowDeleted" msprop:Generator_UserTableName="pedidos" msprop:Generator_RowChangedName="pedidosRowChanged" msprop:Generator_RowEvArgName="pedidosRowChangeEvent" msprop:Generator_RowClassName="pedidosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_pedidos" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_pedidos" msprop:Generator_ColumnPropNameInRow="Id_pedidos" msprop:Generator_ColumnPropNameInTable="Id_pedidosColumn" msprop:Generator_UserColumnName="Id_pedidos" type="xs:int" />
@@ -249,7 +249,7 @@ VALUES        (@Cantidad_pedida, @Precio_producto, @Id_pedidos, @Id_productos)</
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="detalle_pedido" msprop:Generator_TableClassName="detalle_pedidoDataTable" msprop:Generator_TableVarName="tabledetalle_pedido" msprop:Generator_RowChangedName="detalle_pedidoRowChanged" msprop:Generator_TablePropName="detalle_pedido" msprop:Generator_RowDeletingName="detalle_pedidoRowDeleting" msprop:Generator_RowChangingName="detalle_pedidoRowChanging" msprop:Generator_RowEvHandlerName="detalle_pedidoRowChangeEventHandler" msprop:Generator_RowDeletedName="detalle_pedidoRowDeleted" msprop:Generator_RowClassName="detalle_pedidoRow" msprop:Generator_UserTableName="detalle_pedido" msprop:Generator_RowEvArgName="detalle_pedidoRowChangeEvent">
+        <xs:element name="detalle_pedido" msprop:Generator_TableClassName="detalle_pedidoDataTable" msprop:Generator_TableVarName="tabledetalle_pedido" msprop:Generator_TablePropName="detalle_pedido" msprop:Generator_RowDeletingName="detalle_pedidoRowDeleting" msprop:Generator_RowChangingName="detalle_pedidoRowChanging" msprop:Generator_RowEvHandlerName="detalle_pedidoRowChangeEventHandler" msprop:Generator_RowDeletedName="detalle_pedidoRowDeleted" msprop:Generator_UserTableName="detalle_pedido" msprop:Generator_RowChangedName="detalle_pedidoRowChanged" msprop:Generator_RowEvArgName="detalle_pedidoRowChangeEvent" msprop:Generator_RowClassName="detalle_pedidoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_detalle" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_detalle" msprop:Generator_ColumnPropNameInRow="Id_detalle" msprop:Generator_ColumnPropNameInTable="Id_detalleColumn" msprop:Generator_UserColumnName="Id_detalle" type="xs:int" />
@@ -273,7 +273,7 @@ VALUES        (@Cantidad_pedida, @Precio_producto, @Id_pedidos, @Id_productos)</
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="fk_predidoXdetalle" msdata:parent="pedidos" msdata:child="detalle_pedido" msdata:parentkey="Id_pedidos" msdata:childkey="Id_pedidos" msprop:Generator_UserChildTable="detalle_pedido" msprop:Generator_ChildPropName="Getdetalle_pedidoRows" msprop:Generator_UserRelationName="fk_predidoXdetalle" msprop:Generator_RelationVarName="relationfk_predidoXdetalle" msprop:Generator_UserParentTable="pedidos" msprop:Generator_ParentPropName="pedidosRow" />
+      <msdata:Relationship name="fk_predidoXdetalle" msdata:parent="pedidos" msdata:child="detalle_pedido" msdata:parentkey="Id_pedidos" msdata:childkey="Id_pedidos" msprop:Generator_UserChildTable="detalle_pedido" msprop:Generator_ChildPropName="Getdetalle_pedidoRows" msprop:Generator_UserRelationName="fk_predidoXdetalle" msprop:Generator_ParentPropName="pedidosRow" msprop:Generator_RelationVarName="relationfk_predidoXdetalle" msprop:Generator_UserParentTable="pedidos" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

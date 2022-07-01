@@ -1821,7 +1821,7 @@ namespace DAL.Clientes.DataSetClientesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
-            this._connection.ConnectionString = "server=127.0.0.1;user id=root;password=root;database=bd_pedidosweb";
+            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.bd_pedidoswebConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1834,7 +1834,7 @@ namespace DAL.Clientes.DataSetClientesTableAdapters {
                 "      clientes";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._commandCollection[1].Connection = new global::MySql.Data.MySqlClient.MySqlConnection(global::DAL.Properties.Settings.Default.bd_pedidoswebConnectionString);
+            this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "INSERT INTO clientes\r\n                         (Estado_cliente, Id_personas, Id_c" +
                 "iudad, NIT)\r\nVALUES        (@Estado_cliente, @Id_personas, @Id_ciudad, @NIT)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
@@ -2307,7 +2307,7 @@ namespace DAL.Clientes.DataSetClientesTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
-            this._connection.ConnectionString = "server=127.0.0.1;user id=root;password=root;database=bd_pedidosweb";
+            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.bd_pedidoswebConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

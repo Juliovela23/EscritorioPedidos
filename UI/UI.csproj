@@ -179,7 +179,6 @@
     <EmbeddedResource Include="Ciudades\EditarCiudad.resx">
       <DependentUpon>EditarCiudad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ciudades\RepCiudades\ClientesPorCiudad.rdlc" />
     <EmbeddedResource Include="Cliente\CrearCliente.resx">
       <DependentUpon>CrearCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,6 +283,7 @@
     <None Include="Resources\estar.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Ciudades\RepCiudades\" />
     <Folder Include="Ciudades\Vistas\" />
     <Folder Include="RestApi\" />
   </ItemGroup>

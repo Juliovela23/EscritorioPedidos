@@ -11,7 +11,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="clientesTableAdapter" GeneratorDataComponentClassName="clientesTableAdapter" Name="clientes" UserDataComponentName="clientesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="127.0.0.1(bd_pedidosweb)3" DbObjectName="bd_pedidosweb.clientes" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataClientes" GetMethodModifier="Public" GetMethodName="GetDataClientes" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataClientes" UserSourceName="GetDataClientes">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="bd_pedidosweb.clientes" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataClientes" GetMethodModifier="Public" GetMethodName="GetDataClientes" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataClientes" UserSourceName="GetDataClientes">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `clientes` WHERE ((`Id_cliente` = @p1) AND (`Estado_cliente` = @p2) AND (`NIT` = @p3) AND ((@p4 = 1 AND `Id_personas` IS NULL) OR (`Id_personas` = @p5)) AND ((@p6 = 1 AND `Id_ciudad` IS NULL) OR (`Id_ciudad` = @p7)))</CommandText>
@@ -87,7 +87,7 @@ VALUES        (@Estado_cliente, @Id_personas, @Id_ciudad, @NIT)</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="127.0.0.1(bd_pedidosweb)3" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQueryCliente" Modifier="Public" Name="UpdateQueryCliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQueryCliente">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQueryCliente" Modifier="Public" Name="UpdateQueryCliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQueryCliente">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       clientes
@@ -105,7 +105,7 @@ WHERE        (Id_cliente = @Id_cliente)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClientesXpersonasTableAdapter" GeneratorDataComponentClassName="ClientesXpersonasTableAdapter" Name="ClientesXpersonas" UserDataComponentName="ClientesXpersonasTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="127.0.0.1(bd_pedidosweb)3" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetDataClientesPersonas" GetMethodModifier="Public" GetMethodName="GetDataClientesPersonas" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataClientesPersonas" UserSourceName="GetDataClientesPersonas">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetDataClientesPersonas" GetMethodModifier="Public" GetMethodName="GetDataClientesPersonas" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataClientesPersonas" UserSourceName="GetDataClientesPersonas">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        clientes.*, personas.*
@@ -132,7 +132,7 @@ FROM            clientes INNER JOIN
               <Mapping SourceColumn="Direccion" DataSetColumn="Direccion" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="127.0.0.1(bd_pedidosweb)3" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataById_Cliente" GetMethodModifier="Public" GetMethodName="GetDataById_Cliente" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataById_Cliente" UserSourceName="GetDataById_Cliente">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataById_Cliente" GetMethodModifier="Public" GetMethodName="GetDataById_Cliente" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataById_Cliente" UserSourceName="GetDataById_Cliente">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        clientes.*, personas.*
@@ -145,7 +145,7 @@ WHERE        (clientes.Id_cliente = @Id_cliente)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="127.0.0.1(bd_pedidosweb)3" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataById_personaClie" GetMethodModifier="Public" GetMethodName="GetDataById_personaClie" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataById_personaClie" UserSourceName="GetDataById_personaClie">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataById_personaClie" GetMethodModifier="Public" GetMethodName="GetDataById_personaClie" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataById_personaClie" UserSourceName="GetDataById_personaClie">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        clientes.*, personas.*
@@ -168,7 +168,7 @@ WHERE        (clientes.Id_personas=@IdPersona) and (clientes.Estado_cliente=1)</
   <xs:element name="DataSetClientes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetClientes" msprop:Generator_UserDSName="DataSetClientes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="clientes" msprop:Generator_TableClassName="clientesDataTable" msprop:Generator_TableVarName="tableclientes" msprop:Generator_TablePropName="clientes" msprop:Generator_RowDeletingName="clientesRowDeleting" msprop:Generator_RowChangingName="clientesRowChanging" msprop:Generator_RowEvHandlerName="clientesRowChangeEventHandler" msprop:Generator_RowDeletedName="clientesRowDeleted" msprop:Generator_UserTableName="clientes" msprop:Generator_RowChangedName="clientesRowChanged" msprop:Generator_RowEvArgName="clientesRowChangeEvent" msprop:Generator_RowClassName="clientesRow">
+        <xs:element name="clientes" msprop:Generator_TableClassName="clientesDataTable" msprop:Generator_TableVarName="tableclientes" msprop:Generator_RowChangedName="clientesRowChanged" msprop:Generator_TablePropName="clientes" msprop:Generator_RowDeletingName="clientesRowDeleting" msprop:Generator_RowChangingName="clientesRowChanging" msprop:Generator_RowEvHandlerName="clientesRowChangeEventHandler" msprop:Generator_RowDeletedName="clientesRowDeleted" msprop:Generator_RowClassName="clientesRow" msprop:Generator_UserTableName="clientes" msprop:Generator_RowEvArgName="clientesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_cliente" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_cliente" msprop:Generator_ColumnPropNameInRow="Id_cliente" msprop:Generator_ColumnPropNameInTable="Id_clienteColumn" msprop:Generator_UserColumnName="Id_cliente" type="xs:int" />
@@ -185,7 +185,7 @@ WHERE        (clientes.Id_personas=@IdPersona) and (clientes.Estado_cliente=1)</
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ClientesXpersonas" msprop:Generator_TableClassName="ClientesXpersonasDataTable" msprop:Generator_TableVarName="tableClientesXpersonas" msprop:Generator_TablePropName="ClientesXpersonas" msprop:Generator_RowDeletingName="ClientesXpersonasRowDeleting" msprop:Generator_RowChangingName="ClientesXpersonasRowChanging" msprop:Generator_RowEvHandlerName="ClientesXpersonasRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesXpersonasRowDeleted" msprop:Generator_UserTableName="ClientesXpersonas" msprop:Generator_RowChangedName="ClientesXpersonasRowChanged" msprop:Generator_RowEvArgName="ClientesXpersonasRowChangeEvent" msprop:Generator_RowClassName="ClientesXpersonasRow">
+        <xs:element name="ClientesXpersonas" msprop:Generator_TableClassName="ClientesXpersonasDataTable" msprop:Generator_TableVarName="tableClientesXpersonas" msprop:Generator_RowChangedName="ClientesXpersonasRowChanged" msprop:Generator_TablePropName="ClientesXpersonas" msprop:Generator_RowDeletingName="ClientesXpersonasRowDeleting" msprop:Generator_RowChangingName="ClientesXpersonasRowChanging" msprop:Generator_RowEvHandlerName="ClientesXpersonasRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesXpersonasRowDeleted" msprop:Generator_RowClassName="ClientesXpersonasRow" msprop:Generator_UserTableName="ClientesXpersonas" msprop:Generator_RowEvArgName="ClientesXpersonasRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_cliente" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_cliente" msprop:Generator_ColumnPropNameInRow="Id_cliente" msprop:Generator_ColumnPropNameInTable="Id_clienteColumn" msprop:Generator_UserColumnName="Id_cliente" type="xs:int" />

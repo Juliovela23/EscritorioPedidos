@@ -186,7 +186,7 @@ FROM            categoria_productos</CommandText>
               <Mapping SourceColumn="Descripcion_categoria" DataSetColumn="Descripcion_categoria" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQueryCategoria" Modifier="Public" Name="DeleteQueryCategoria" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteQueryCategoria">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQueryCategoria" Modifier="Public" Name="DeleteQueryCategoria" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQueryCategoria">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM `categoria_productos` WHERE (`Id_categoriaP` = @Id_categoria)</CommandText>
@@ -207,7 +207,7 @@ FROM            categoria_productos where Id_categoriaP=@Id_categoriaP</CommandT
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryCategoriaP" Modifier="Public" Name="InsertQueryCategoriaP" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryCategoriaP">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryCategoriaP" Modifier="Public" Name="InsertQueryCategoriaP" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertQueryCategoriaP">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO categoria_productos
@@ -220,7 +220,7 @@ VALUES        (@Nombre_cat, @Descripcion_categoria)</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQueryCategoriaProducto" Modifier="Public" Name="UpdateQueryCategoriaProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateQueryCategoriaProducto">
+              <DbSource ConnectionRef="bd_pedidoswebConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQueryCategoriaProducto" Modifier="Public" Name="UpdateQueryCategoriaProducto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateQueryCategoriaProducto">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       categoria_productos
@@ -244,7 +244,7 @@ WHERE        (Id_categoriaP = @Id_categoriaP)</CommandText>
   <xs:element name="DataSetProductos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetProductos" msprop:Generator_UserDSName="DataSetProductos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="productos" msprop:Generator_TableClassName="productosDataTable" msprop:Generator_TableVarName="tableproductos" msprop:Generator_RowChangedName="productosRowChanged" msprop:Generator_TablePropName="productos" msprop:Generator_RowDeletingName="productosRowDeleting" msprop:Generator_RowChangingName="productosRowChanging" msprop:Generator_RowEvHandlerName="productosRowChangeEventHandler" msprop:Generator_RowDeletedName="productosRowDeleted" msprop:Generator_RowClassName="productosRow" msprop:Generator_UserTableName="productos" msprop:Generator_RowEvArgName="productosRowChangeEvent">
+        <xs:element name="productos" msprop:Generator_TableClassName="productosDataTable" msprop:Generator_TableVarName="tableproductos" msprop:Generator_TablePropName="productos" msprop:Generator_RowDeletingName="productosRowDeleting" msprop:Generator_RowChangingName="productosRowChanging" msprop:Generator_RowEvHandlerName="productosRowChangeEventHandler" msprop:Generator_RowDeletedName="productosRowDeleted" msprop:Generator_UserTableName="productos" msprop:Generator_RowChangedName="productosRowChanged" msprop:Generator_RowEvArgName="productosRowChangeEvent" msprop:Generator_RowClassName="productosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_productos" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_productos" msprop:Generator_ColumnPropNameInRow="Id_productos" msprop:Generator_ColumnPropNameInTable="Id_productosColumn" msprop:Generator_UserColumnName="Id_productos" type="xs:int" />
@@ -274,7 +274,7 @@ WHERE        (Id_categoriaP = @Id_categoriaP)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="categoria_productos" msprop:Generator_TableClassName="categoria_productosDataTable" msprop:Generator_TableVarName="tablecategoria_productos" msprop:Generator_TablePropName="categoria_productos" msprop:Generator_RowDeletingName="categoria_productosRowDeleting" msprop:Generator_RowChangingName="categoria_productosRowChanging" msprop:Generator_RowEvHandlerName="categoria_productosRowChangeEventHandler" msprop:Generator_RowDeletedName="categoria_productosRowDeleted" msprop:Generator_UserTableName="categoria_productos" msprop:Generator_RowChangedName="categoria_productosRowChanged" msprop:Generator_RowEvArgName="categoria_productosRowChangeEvent" msprop:Generator_RowClassName="categoria_productosRow">
+        <xs:element name="categoria_productos" msprop:Generator_TableClassName="categoria_productosDataTable" msprop:Generator_TableVarName="tablecategoria_productos" msprop:Generator_RowChangedName="categoria_productosRowChanged" msprop:Generator_TablePropName="categoria_productos" msprop:Generator_RowDeletingName="categoria_productosRowDeleting" msprop:Generator_RowChangingName="categoria_productosRowChanging" msprop:Generator_RowEvHandlerName="categoria_productosRowChangeEventHandler" msprop:Generator_RowDeletedName="categoria_productosRowDeleted" msprop:Generator_RowClassName="categoria_productosRow" msprop:Generator_UserTableName="categoria_productos" msprop:Generator_RowEvArgName="categoria_productosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_categoriaP" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_categoriaP" msprop:Generator_ColumnPropNameInRow="Id_categoriaP" msprop:Generator_ColumnPropNameInTable="Id_categoriaPColumn" msprop:Generator_UserColumnName="Id_categoriaP" type="xs:int" />
@@ -308,7 +308,7 @@ WHERE        (Id_categoriaP = @Id_categoriaP)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_catXproducto" msdata:parent="categoria_productos" msdata:child="productos" msdata:parentkey="Id_categoriaP" msdata:childkey="Id_categoriaP" msprop:Generator_UserChildTable="productos" msprop:Generator_ChildPropName="GetproductosRows" msprop:Generator_UserRelationName="FK_catXproducto" msprop:Generator_RelationVarName="relationFK_catXproducto" msprop:Generator_UserParentTable="categoria_productos" msprop:Generator_ParentPropName="categoria_productosRow" />
+      <msdata:Relationship name="FK_catXproducto" msdata:parent="categoria_productos" msdata:child="productos" msdata:parentkey="Id_categoriaP" msdata:childkey="Id_categoriaP" msprop:Generator_UserChildTable="productos" msprop:Generator_ChildPropName="GetproductosRows" msprop:Generator_UserRelationName="FK_catXproducto" msprop:Generator_ParentPropName="categoria_productosRow" msprop:Generator_RelationVarName="relationFK_catXproducto" msprop:Generator_UserParentTable="categoria_productos" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
