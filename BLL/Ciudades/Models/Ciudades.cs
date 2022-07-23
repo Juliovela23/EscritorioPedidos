@@ -11,7 +11,7 @@ namespace BLL.Ciudades.Models
         public int? Id_ciudad { get; set; }
         public string Nombre_ciudad { get; set; }
         public string Pais { get; set; }
-        public string Region_O_Departamento { get; set; }
+        public string region { get; set; }
         public string Elevacion_sobre_Mar { get; set; }
         public string Indice_robos { get; set; }
         public string Ingresos_promedio { get; set; }

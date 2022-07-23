@@ -163,6 +163,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap reporte_de_negocios__1_ {
+            get {
+                object obj = ResourceManager.GetObject("reporte-de-negocios (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap revision_del_cliente {
             get {
                 object obj = ResourceManager.GetObject("revision-del-cliente", resourceCulture);

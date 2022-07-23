@@ -33,7 +33,6 @@ namespace UI.Ciudades
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panelGeneral = new System.Windows.Forms.Panel();
-            this.ComboPais = new System.Windows.Forms.ComboBox();
             this.Grupo_info = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtIngresos = new System.Windows.Forms.TextBox();
@@ -52,6 +51,8 @@ namespace UI.Ciudades
             this.btnSearch = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtCiudadBus = new System.Windows.Forms.TextBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelGeneral.SuspendLayout();
@@ -98,7 +99,8 @@ namespace UI.Ciudades
             // 
             // panelGeneral
             // 
-            this.panelGeneral.Controls.Add(this.ComboPais);
+            this.panelGeneral.Controls.Add(this.txtPais);
+            this.panelGeneral.Controls.Add(this.txtCiudadBus);
             this.panelGeneral.Controls.Add(this.Grupo_info);
             this.panelGeneral.Controls.Add(this.label2);
             this.panelGeneral.Controls.Add(this.label4);
@@ -112,16 +114,6 @@ namespace UI.Ciudades
             this.panelGeneral.Name = "panelGeneral";
             this.panelGeneral.Size = new System.Drawing.Size(875, 430);
             this.panelGeneral.TabIndex = 59;
-            // 
-            // ComboPais
-            // 
-            this.ComboPais.FormattingEnabled = true;
-            this.ComboPais.Items.AddRange(new object[] {
-            "Guatemala"});
-            this.ComboPais.Location = new System.Drawing.Point(482, 73);
-            this.ComboPais.Name = "ComboPais";
-            this.ComboPais.Size = new System.Drawing.Size(186, 21);
-            this.ComboPais.TabIndex = 86;
             // 
             // Grupo_info
             // 
@@ -328,13 +320,12 @@ namespace UI.Ciudades
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.Yellow;
-            this.btnSearch.Location = new System.Drawing.Point(680, 68);
+            this.btnSearch.Location = new System.Drawing.Point(739, 65);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(76, 32);
             this.btnSearch.TabIndex = 77;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Visible = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label12
@@ -344,7 +335,7 @@ namespace UI.Ciudades
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(89)))), ((int)(((byte)(85)))));
-            this.label12.Location = new System.Drawing.Point(374, 74);
+            this.label12.Location = new System.Drawing.Point(276, 68);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(102, 16);
             this.label12.TabIndex = 79;
@@ -367,6 +358,32 @@ namespace UI.Ciudades
             this.btnGuardar.Text = "Registrar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // txtCiudadBus
+            // 
+            this.txtCiudadBus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCiudadBus.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCiudadBus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCiudadBus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCiudadBus.ForeColor = System.Drawing.Color.Black;
+            this.txtCiudadBus.Location = new System.Drawing.Point(553, 68);
+            this.txtCiudadBus.MaxLength = 100;
+            this.txtCiudadBus.Name = "txtCiudadBus";
+            this.txtCiudadBus.Size = new System.Drawing.Size(146, 27);
+            this.txtCiudadBus.TabIndex = 18;
+            // 
+            // txtPais
+            // 
+            this.txtPais.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPais.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPais.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPais.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPais.ForeColor = System.Drawing.Color.Black;
+            this.txtPais.Location = new System.Drawing.Point(384, 68);
+            this.txtPais.MaxLength = 100;
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(146, 27);
+            this.txtPais.TabIndex = 85;
             // 
             // CrearCiudad
             // 
@@ -408,12 +425,13 @@ namespace UI.Ciudades
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.ComboBox ComboPais;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtIngresos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNivelDelmar;
         private System.Windows.Forms.TextBox txtRobos;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtCiudadBus;
+        private System.Windows.Forms.TextBox txtPais;
     }
 }

@@ -26,12 +26,13 @@ namespace DAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=cacaoprueba1.mysql.database.azure.com;user id=admin1@cacaoprueba1;password" +
-            "=Ec3670u5;persistsecurityinfo=True;database=bd_pedidosweb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=root;password=root;persistsecurityinfo=True;database=bd_" +
+            "pedidosweb")]
         public string bd_pedidoswebConnectionString {
             get {
                 return ((string)(this["bd_pedidoswebConnectionString"]));
             }
         }
+       
     }
 }

@@ -13,10 +13,12 @@ namespace BLL.Empleados.Commands
     {
         PersonasXempleadosTableAdapter logicaEmpleados;
         LoginTableAdapter logicaLogin;
+        Data.Sql CONNECT;
         public ListarEmpleado()
         {
             logicaEmpleados = new PersonasXempleadosTableAdapter();
             logicaLogin = new LoginTableAdapter();
+            CONNECT = new Data.Sql();
         }
         public ArrayList obtenerCliente(int Id_personaBus)
         {
@@ -66,6 +68,59 @@ namespace BLL.Empleados.Commands
         public DataTable listadoPersonas()
         {
             return logicaEmpleados.GetDataByEstado();
+
+        }
+
+        public DataTable listEmpleados(string Nombre)
+        {
+
+            try
+            {
+                MySql.Data.MySqlClient.MySqlConnection cadena = new MySql.Data.MySqlClient.MySqlConnection
+                 (CONNECT.b());
+                MySql.Data.MySqlClient.MySqlDataAdapter export = new MySql.Data.MySqlClient.MySqlDataAdapter
+                (
+                    "SELECT CONCAT(P.Nombres,' ',P.Apellidos) as NombreCompleto, P.CUI, P.Fecha_nacimiento as Fecha_de_Nacimiento, " +
+                    " CASE WHEN E.Estado = 0 THEN 'InActivo' " +
+                    " WHEN E.Estado = 1 THEN 'Activo' " +
+                    " ELSE 'No Especificado' END AS Estado " +
+                    " FROM personas AS P INNER JOIN empleados as E ON E.Id_personas=P.Id_personas " +
+                    " WHERE E.Estado = 1 AND P.nombres LIKE '%" + Nombre + "%'", cadena);
+                DataTable tabla = new DataTable();
+                export.Fill(tabla);
+                return tabla;
+            }
+            catch (Exception)
+            {
+                DataTable tabla = new DataTable();
+                return tabla;
+            }
+
+        }
+        public DataTable TodosEmpleados()
+        {
+
+            try
+            {
+                MySql.Data.MySqlClient.MySqlConnection cadena = new MySql.Data.MySqlClient.MySqlConnection
+                 (CONNECT.b());
+                MySql.Data.MySqlClient.MySqlDataAdapter export = new MySql.Data.MySqlClient.MySqlDataAdapter
+                (
+                    "SELECT CONCAT(P.Nombres,' ',P.Apellidos) as NombreCompleto, P.CUI, P.Fecha_nacimiento as Fecha_de_Nacimiento, " +
+                    " CASE WHEN E.Estado = 0 THEN 'InActivo' " +
+                    " WHEN E.Estado = 1 THEN 'Activo' " +
+                    " ELSE 'No Especificado' END AS Estado " +
+                    " FROM personas AS P INNER JOIN empleados as E ON E.Id_personas=P.Id_personas " +
+                    " WHERE E.Estado = 1", cadena);
+                DataTable tabla = new DataTable();
+                export.Fill(tabla);
+                return tabla;
+            }
+            catch (Exception)
+            {
+                DataTable tabla = new DataTable();
+                return tabla;
+            }
 
         }
     }

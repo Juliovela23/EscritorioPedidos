@@ -126,6 +126,10 @@ namespace UI.Pedidos
             {
                 if (MessageBox.Show("Está seguro del pedido?", "Proceso de pedido", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    if (txt_orden.Text==" ") {
+                        MessageBox.Show("Por favor Coloque el numero de pedido","Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    }
+                    else { 
                     string respuesta = "";
                     List<det_pedidos> listadoProductos = new List<det_pedidos>();
                     det_pedidos item;
@@ -152,6 +156,7 @@ namespace UI.Pedidos
 
 
 
+                    }
                     }
                 }
             }

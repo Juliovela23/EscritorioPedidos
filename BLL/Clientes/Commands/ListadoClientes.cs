@@ -12,12 +12,92 @@ namespace BLL.Clientes.Commands
     {
         clientesTableAdapter logicaClientes;
         ClientesXpersonasTableAdapter logicaClientePersonas;
+        Data.Sql CONNECT;
         public ListadoClientes()
         {
             logicaClientes = new clientesTableAdapter();
+            CONNECT = new Data.Sql();
+
             logicaClientePersonas = new ClientesXpersonasTableAdapter();
         }
 
+        public DataTable listClientes(string Nombre) {
+            
+                try
+                {
+                MySql.Data.MySqlClient.MySqlConnection cadena = new MySql.Data.MySqlClient.MySqlConnection
+                 (CONNECT.b());
+                MySql.Data.MySqlClient.MySqlDataAdapter export = new MySql.Data.MySqlClient.MySqlDataAdapter
+                (
+                    "SELECT C.NIT, CONCAT(P.Nombres,' ',P.Apellidos) as NombreCompleto, P.CUI, P.Fecha_nacimiento as Fecha_de_Nacimiento, " +
+                    " CASE WHEN C.Estado_cliente = 0 THEN 'InActivo' " +
+                    " WHEN C.Estado_cliente = 1 THEN 'Activo' " +
+                    " ELSE 'No Especificado' END AS Estado ," +
+                    " Ciu.Nombre_ciudad AS Ciudad FROM personas AS P INNER JOIN clientes as C ON C.Id_personas=P.Id_personas " +
+                    "INNER JOIN ciudades as Ciu ON C.Id_ciudad=Ciu.Id_ciudad WHERE C.Estado_cliente = 1 AND P.nombres LIKE '%" + Nombre +"%'" , cadena);
+                    DataTable tabla = new DataTable();
+                    export.Fill(tabla);
+                    return tabla;
+                }
+                catch (Exception)
+                {
+                    DataTable tabla = new DataTable();
+                    return tabla;
+                }
+            
+        }
+        public DataTable TodosClientes()
+        {
+
+            try
+            {
+                MySql.Data.MySqlClient.MySqlConnection cadena = new MySql.Data.MySqlClient.MySqlConnection
+                 (CONNECT.b());
+                MySql.Data.MySqlClient.MySqlDataAdapter export = new MySql.Data.MySqlClient.MySqlDataAdapter
+                (
+                    "SELECT C.NIT, CONCAT(P.Nombres,' ',P.Apellidos) as NombreCompleto, P.CUI, P.Fecha_nacimiento as Fecha_de_Nacimiento, " +
+                    " CASE WHEN C.Estado_cliente = 0 THEN 'InActivo' " +
+                    " WHEN C.Estado_cliente = 1 THEN 'Activo' " +
+                    " ELSE 'No Especificado' END AS Estado ," +
+                    " Ciu.Nombre_ciudad AS Ciudad FROM personas AS P INNER JOIN clientes as C ON C.Id_personas=P.Id_personas " +
+                    "INNER JOIN ciudades as Ciu ON C.Id_ciudad=Ciu.Id_ciudad WHERE C.Estado_cliente = 1", cadena);
+                DataTable tabla = new DataTable();
+                export.Fill(tabla);
+                return tabla;
+            }
+            catch (Exception)
+            {
+                DataTable tabla = new DataTable();
+                return tabla;
+            }
+
+        }
+        public DataTable listadoClientesNIT(string Nit)
+        {
+
+            try
+            {
+                MySql.Data.MySqlClient.MySqlConnection cadena = new MySql.Data.MySqlClient.MySqlConnection
+                 (CONNECT.b());
+                MySql.Data.MySqlClient.MySqlDataAdapter export = new MySql.Data.MySqlClient.MySqlDataAdapter
+                (
+                    "SELECT C.NIT, CONCAT(P.Nombres,' ',P.Apellidos) as NombreCompleto, P.CUI, P.Fecha_nacimiento as Fecha_de_Nacimiento, " +
+                    " CASE WHEN C.Estado_cliente = 0 THEN 'InActivo' " +
+                    " WHEN C.Estado_cliente = 1 THEN 'Activo' " +
+                    " ELSE 'No Especificado' END AS Estado ," +
+                    " Ciu.Nombre_ciudad AS Ciudad FROM personas AS P INNER JOIN clientes as C ON C.Id_personas=P.Id_personas " +
+                    "INNER JOIN ciudades as Ciu ON C.Id_ciudad=Ciu.Id_ciudad WHERE C.Estado_cliente = 1 AND C.NIT LIKE '%" + Nit + "%'", cadena);
+                DataTable tabla = new DataTable();
+                export.Fill(tabla);
+                return tabla;
+            }
+            catch (Exception)
+            {
+                DataTable tabla = new DataTable();
+                return tabla;
+            }
+
+        }
         public DataTable listadoClientes()
         {
             return logicaClientes.GetDataClientes();

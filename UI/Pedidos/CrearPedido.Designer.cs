@@ -605,7 +605,6 @@ namespace UI.Pedidos
             // 
             this.txt_orden.BackColor = System.Drawing.SystemColors.Window;
             this.txt_orden.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_orden.Enabled = false;
             this.txt_orden.ForeColor = System.Drawing.Color.Black;
             this.txt_orden.Location = new System.Drawing.Point(65, 43);
             this.txt_orden.Name = "txt_orden";

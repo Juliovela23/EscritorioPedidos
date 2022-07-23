@@ -23,7 +23,7 @@ namespace UI.Cliente
         ValidarPersona logicaPersona;
         CreateEmpleados logicEmpleados;
         CreateCliente logicaCliente;
-        ListadoClientes logicaClienteslists;
+        BLL.Clientes.Commands.ListadoClientes logicaClienteslists;
         UpdateCliente logicaUpdate;
         ArrayList DatosEmpleados = new ArrayList();
         ArrayList datosClientes = new ArrayList();
@@ -170,7 +170,7 @@ namespace UI.Cliente
             logicaPersona = new ValidarPersona();
             logicaCliente = new CreateCliente();
             logicaEmpleados = new ListarEmpleado();
-            logicaClienteslists = new ListadoClientes();
+            logicaClienteslists = new BLL.Clientes.Commands.ListadoClientes();
             logicaUpdate = new UpdateCliente();
             Opc = opcion;
         }

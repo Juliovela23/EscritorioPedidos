@@ -295,5 +295,60 @@ namespace UI.General
         {
             abrirFormulario(new Productos.EditarProducto(0));
         }
+
+        private void btn_listarClientes_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new Cliente.ListadoClientes());
+        }
+
+        private void btn_listarEmpleado_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new Empleados.ListadoEmpleados());
+        }
+
+        private void btn_listarCiudad_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new Ciudades.ListadoCiudad());
+        }
+
+        private void report1_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new Reportes.Reporte1());
+        }
+
+        private void Report2_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new Reportes.Reporte2());
+        }
+
+        private void report3_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new Reportes.Reporte3());
+        }
+
+        private void report4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void butReportes_Click(object sender, EventArgs e)
+        {
+            if (panelCiudades.Visible)
+            {
+               panelReportes.Visible = false;
+
+
+            }
+            else
+            {
+                panelEmpleados.Visible = false;
+                panelClientes.Visible = false;
+                panelCiudades.Visible = false;
+                panelReportes.Visible = true;
+                panelProductos.Visible = false;
+                panelPedidos.Visible = false;
+                panelCategorias.Visible = false;
+            }
+        }
     }
 }
